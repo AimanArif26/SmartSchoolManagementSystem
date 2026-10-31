@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e6d7cb;
+    font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+.left-panel {
+    text-align: left;
+    margin-bottom: 120px;
+}
+
+.home-link {
+    font-size: 14px;
+    text-decoration: none;
+    color: #666;
+    transition: 0.3s;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.home-link:hover {
+    color: #222;
+    transform: translateX(-5px); /* Slight movement effect */
+}
+
+.title-logo {
+    display: inline-flex;      
+    align-items: center;        
+    gap: 10px;                  
+}
+
+.system-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.school-logo {
+    width: 100px;
+    margin-top: 10px;
+}
+
+.welcome-text {
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.login-box {
+    width: 350px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login-box h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 90%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.password-group {
+    position: relative;
+}
+
+.toggle-icon {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #8c8279;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    background-color: #b68f79;
+}
+
+.register-link {
+    display: block;
+    font-size: 14px;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #2a78d1;
+}

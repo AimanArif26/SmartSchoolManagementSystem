@@ -1,0 +1,10 @@
+# Eclipse / build output
+build/
+bin/
+target/
+*.class
+.metadata/
+
+# OS files
+Thumbs.db
+.DS_Store

@@ -1,0 +1,497 @@
+/* =========================================
+   1. GLOBAL RESETS & THEME (From TeacherList)
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+/* =========================================
+   2. LAYOUT COMPONENTS (Header, Sidebar, Main)
+   ========================================= */
+
+/* Header */
+.header {
+  background-color: #8c8279;
+  color: white;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.menu-toggle-icon {
+  margin-right: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.profile-area {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-name {
+  margin-right: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.profile-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+/* Profile Dropdown Menu */
+.profile-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 180px;
+  padding: 10px 0;
+  z-index: 100;
+}
+
+.profile-menu p {
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #333;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-menu p:hover {
+  background-color: #f5f5f5;
+}
+
+/* Sidebar */
+.main-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #e6d7cb;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed { width: 70px; }
+.sidebar.collapsed .link-text { display: none; }
+.sidebar.collapsed .menu-item { justify-content: center; padding: 15px 0; }
+.sidebar.collapsed .menu-item .icon { margin-right: 0; font-size: 1.3rem; }
+
+.sidebar-menu { list-style: none; }
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 25px;
+  color: #5a5a5a;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.menu-item:hover { background-color: rgba(0, 0, 0, 0.04); color: #333; }
+.menu-item.active {
+  color: #a855f7;
+  background-color: rgba(168, 85, 247, 0.05);
+  border-left: 4px solid #a855f7;
+}
+
+.menu-item .icon {
+  margin-right: 20px;
+  width: 24px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #7c7c7c;
+}
+
+/* Main Content Area */
+.content {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.breadcrumb {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+.breadcrumb-separator { margin: 0 15px; color: #aaa; font-weight: normal; }
+.current-page { color: #aaa; }
+
+/* Card Container */
+.card {
+  background: #fff;
+  padding: 30px; 
+  flex: 1;
+  min-width: 200px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e7eb;
+}
+
+/* =========================================
+   3. FILTERS & SEARCH
+   ========================================= */
+
+/* Container for the whole row */
+.controls-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between; /* Adjusted for Student layout */
+    gap: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+/* Filter Group */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #5a4a42;
+    margin-left: 4px;
+}
+
+/* Dropdown Style */
+.styled-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 220px;
+    height: 45px;
+    padding: 0 20px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 14px;
+    color: #444;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%235a4a42%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.styled-select:hover { border-color: #d4c4b7; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.styled-select:focus { border-color: #5a4a42; outline: none; }
+
+/* Search Bar */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.form-group { margin-bottom: 20px !important; margin-top: 0; }
+.form-group label {
+    display: block; margin-bottom: 5px; font-weight: 600; color: #5a4a42; font-size: 14px;
+}
+.form-actions {
+    margin-top: 25px; /* Creates the gap you need above the button */
+    padding-top: 10px;
+    display: flex;
+    justify-content: center; /* Centers the Save button */
+}
+.form-control {
+    width: 280px;
+    height: 45px;
+    padding: 0 20px;
+    padding-right: 45px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.form-control:focus { border-color: #5a4a42; outline: none; }
+.search-container i { position: absolute; right: 20px; color: #888; pointer-events: none; }
+
+/* =========================================
+   4. STUDENT SPECIFIC BUTTONS (NEW)
+   ========================================= */
+.btn-group {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-custom {
+    padding: 0 20px; /* matched height with inputs */
+    height: 45px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-new {
+    background-color:#8c8279; /* Matches theme brown */
+    color: white;
+}
+.btn-new:hover { background-color: #3e322c; transform: translateY(-2px); }
+
+.btn-del-all {
+    background-color: #d9534f; /* Red */
+    color: white;
+}
+.btn-del-all:hover { background-color: #c9302c; transform: translateY(-2px); }
+
+/* =========================================
+   5. TABLE STYLES
+   ========================================= */
+.table-responsive { overflow-x: auto; margin-top: 20px; }
+table { width: 100%; border-collapse: collapse; }
+
+th { background-color: #fdfaf8; padding: 15px; text-align: left; border-bottom: 2px solid #e6d7cb; font-weight: 700; }
+td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; }
+
+.action-icons-wrapper { display: flex; gap: 8px; }
+.action-btn { width: 32px; height: 32px; border-radius: 5px; cursor: pointer; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; transition: 0.2s; }
+.delete-btn:hover { background-color: #fee2e2; border-color: #fca5a5; }
+.delete-btn { color: #dc2626; border-color: #f87171; }
+.edit-btn:hover { background-color: #f0f0f0; }
+
+/* =========================================
+   6. MODALS
+   ========================================= */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5); z-index: 1000;
+    display: none; justify-content: center; align-items: center;
+}
+.beige-modal {
+    background-color: #e6d7cb;
+    padding: 30px; border-radius: 15px; width: 400px;
+    position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    font-family: sans-serif;
+    animation: fadeIn 0.3s;
+}
+.close-icon {
+    position: absolute; top: 15px; right: 20px; font-size: 24px;
+    cursor: pointer; color: #5a4a42;
+}
+.beige-modal h3 { text-align: center; color: #5a4a42; margin-bottom: 25px; margin-top: 0; }
+
+.modal-box {
+  background-color: #e6d7cb;
+  padding: 30px;
+  border-radius: 15px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.modal-btn {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-cancel {
+  background-color: #d1d5db;
+  color: #333;
+}
+
+.btn-reject {
+  background-color: #ef4444;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Modal Inputs */
+.edit-input {
+    width: 100%; padding: 10px; border: 1px solid #d4c4b7;
+    border-radius: 8px; box-sizing: border-box; font-size: 14px;
+}
+.readonly-input {
+    background-color: #e9e0d9; color: #777; cursor: not-allowed;
+}
+
+/* =========================================
+   7. SAVE BUTTONS (For Modals)
+   ========================================= */
+.btn-save-grey {
+    /* 1. Size & Shape */
+    padding: 15px 60px !important; 
+    min-width: 250px !important;   
+    border: none;
+    border-radius: 50px !important;
+    
+    /* 2. Colors & Text */
+    background-color: #5a4a42 !important; /* Brown */
+    color: white !important;
+    font-weight: 700;
+    font-size: 18px !important;
+    letter-spacing: 0.5px;
+    
+    /* 3. Effects */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(90, 74, 66, 0.25);
+}
+.btn-save-grey:hover {
+    background-color: #3e322c !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(90, 74, 66, 0.35);
+}
+
+.btn-save-grey:active {
+    transform: translateY(0);
+}
+/* =========================================
+   9. CARD FOOTER (Button Layout)
+   ========================================= */
+.card-footer {
+    display: flex;
+    justify-content: flex-end; /* Aligns buttons to the LEFT */
+    gap: 15px;                   /* Space between the two buttons */
+    margin-top: 10px;            /* Push away from the table */
+    padding-top: 10px;
+    border-top: 1px solid #eee;  /* Optional: faint line to separate footer */
+}
+
+/* =========================================
+   10. CARD HEADER ACTIONS (Top Button)
+   ========================================= */
+.card-header-actions {
+    display: flex;
+    justify-content: flex-end; /* Align button to the RIGHT */
+    margin-bottom: 10px;       /* Space between Button and Search Bar */
+}
+
+/* =========================================
+   8. TOAST NOTIFICATIONS
+   ========================================= */
+.notification-toast {
+    visibility: hidden; min-width: 300px; background-color: #333; color: #fff;
+    text-align: center; border-radius: 8px; padding: 16px; position: fixed;
+    z-index: 1001; left: 50%; top: 30px; transform: translateX(-50%);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); font-size: 16px; font-weight: 500;
+    opacity: 0; transition: opacity 0.5s, top 0.5s;
+}
+.notification-toast.success { background-color: #4CAF50; }
+.notification-toast.error { background-color: #f44336; }
+.notification-toast.show { visibility: visible; opacity: 1; top: 50px; }
+
+/* Color Palette & Movement */
+:root {
+    --primary-brown: #5a4a42;
+    --soft-beige: #fdfaf8;
+    --danger-red: #d9534f;
+    --sidebar-bg: #e6d7cb;
+    --transition-speed: 0.3s;
+}
+
+/* Modal Animation */
+.modal-overlay {
+    transition: opacity var(--transition-speed) ease-in-out;
+}
+
+.beige-modal {
+    transform: scale(0.9);
+    transition: transform var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay[style*="display: flex"] .beige-modal {
+    transform: scale(1);
+}
+
+/* Action Button Movement */
+
+
+/* Toast Slide-In */
+.notification-toast {
+    top: -100px;
+    transition: top 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.5s;
+}
+
+.notification-toast.show {
+    top: 50px;
+}

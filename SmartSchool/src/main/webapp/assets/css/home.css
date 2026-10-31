@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex; /* Use flex to center the main box */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Background */
+.background-container {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: #000; /* Fallback color */
+}
+
+.background-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(5px) brightness(0.7); 
+}
+
+/* Main box */
+.main-box {
+    background: rgba(255, 255, 255, 0.95); /* Slight transparency looks modern */
+    width: 100%;
+    max-width: 900px; /* Limits width on big screens */
+    padding: 50px 30px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.main-box h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.subtitle {
+    margin: 15px 0 30px;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Role buttons grid */
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows cards to wrap on mobile */
+    gap: 30px;
+}
+
+.role-card {
+    width: 220px;
+    padding: 30px 20px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #eee;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.role-card:hover {
+    transform: translateY(-10px);
+    background: #fdfaf8; /* Very light tint on hover */
+    border-color: #d6c0b3; /* Match your sidebar color */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.role-card p {
+    font-weight: 600;
+    color: #444;
+}
+
+.icon {
+    width: 80px;
+    height: 80px; 
+    object-fit: contain;    
+    margin-bottom: 15px;
+    mix-blend-mode: multiply;
+}
+
+/* Mobile Responsive adjustment */
+@media (max-width: 600px) {
+    .role-card {
+        width: 100%; /* Full width cards on small phones */
+    }
+    .main-box {
+        padding: 30px 15px;
+    }
+}
