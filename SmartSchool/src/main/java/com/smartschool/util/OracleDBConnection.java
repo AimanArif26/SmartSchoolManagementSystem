@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class OracleDBConnection {
-    // Oracle connection details
     private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
     private static final String URL = "jdbc:oracle:thin:@//localhost:1521/FREEPDB1";
     private static final String USER = "system"; 

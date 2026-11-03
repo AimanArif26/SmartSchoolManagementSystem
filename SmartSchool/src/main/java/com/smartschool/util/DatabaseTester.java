@@ -12,7 +12,6 @@ public class DatabaseTester {
             if (conn != null && !conn.isClosed()) {
                 System.out.println("1. [SUCCESS] Java reached XAMPP!");
                 
-                // Let's try to actually query your USER table
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT COUNT(*) AS total FROM user");
                 
