@@ -11,7 +11,6 @@ body {
     height: 100vh;
 }
 
-/* SIDEBAR */
 .sidebar {
     width: 230px;
     height: 100%;
@@ -46,8 +45,6 @@ body {
     background: #cab0a2;
 }
 
-/* SIDEBAR BOTTOM BUTTONS */
-
 .sidebar-bottom {
     display: flex;
     justify-content: flex-start;
@@ -73,7 +70,6 @@ body {
     color: white;
 }
 
-/* MAIN */
 .main {
     flex: 1;
     padding: 25px;
@@ -85,13 +81,13 @@ body {
 
 .main-bg-wrapper {
     position: absolute;
-    top: 53px; /* Adjust this to match the height of your topbar */
+    top: 53px;
     left: 0;
     width: 100%;
-    height: calc(100% - 70px); /* Fill the rest of the space */
+    height: calc(100% - 70px);
     z-index: 0; 
     overflow: hidden;
-    pointer-events: none; /* Allows you to click cards "through" the background */
+    pointer-events: none;
 }
 
 .background-img {
@@ -120,7 +116,6 @@ body {
     border-color: #333;
 }
 
-/* CARDS */
 .card-box {
     display: flex;
     flex-direction: column;
@@ -160,7 +155,6 @@ body {
 
 .card-left img {
     width: 60px;
-    /* icon size */
 }
 
 .card-left p {
@@ -171,11 +165,9 @@ body {
 
 .card-right img {
     width: 120px;
-    /* right-side image size */
     border-radius: 12px;
 }
 
-/* Modal Overlay */
 .modal {
     position: fixed;
     top: 0;
@@ -190,7 +182,6 @@ body {
     z-index: 1000;
 }
 
-/* Modal Content */
 .modal-content {
     background-color: #fff;
     padding: 30px;
@@ -222,8 +213,6 @@ body {
     color: #fff;
 }
 
-
-/* DARK MODE */
 .dark {
     background: #111 !important;
     color: white !important;
@@ -263,7 +252,6 @@ body {
     color: yellow;
 }
 
-/* PROFILE BUTTON */
 .top-right {
     position: relative;
 }

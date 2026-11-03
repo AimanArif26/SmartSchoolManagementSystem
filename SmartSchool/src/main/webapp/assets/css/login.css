@@ -29,7 +29,7 @@ body {
 
 .home-link:hover {
     color: #222;
-    transform: translateX(-5px); /* Slight movement effect */
+    transform: translateX(-5px);
 }
 
 .title-logo {

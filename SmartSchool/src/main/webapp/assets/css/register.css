@@ -10,7 +10,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Centers the box vertically on the screen */
+    min-height: 100vh;
     padding: 20px;
 }
 
@@ -33,7 +33,6 @@ body {
     color: #555;
 }
 
-/* --- Registration Box --- */
 .register-box {
     background: #fff;
     padding: 30px;
@@ -41,9 +40,8 @@ body {
     box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
 }
 
-/* --- Form Elements --- */
 input, select {
-    width: 100%; /* Changed from 95% to 100% for perfect alignment */
+    width: 100%;
     padding: 12px;
     margin-top: 15px;
     border: 1px solid #ddd;
@@ -57,7 +55,6 @@ input:focus, select:focus {
     border-color: #8c8279;
 }
 
-/* --- Date of Birth Section --- */
 .dob-label {
     text-align: left;
     display: block;
@@ -97,7 +94,6 @@ input:focus, select:focus {
     color: #333;
 }
 
-/* --- Submit Button --- */
 .register-btn {
     width: 100%;
     padding: 14px;
@@ -115,7 +111,6 @@ input:focus, select:focus {
     background: #b68f79; 
 }
 
-/* --- Login Link --- */
 .login-link {
     display: inline-block;
     margin-top: 20px;

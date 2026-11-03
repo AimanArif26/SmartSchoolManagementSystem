@@ -1,6 +1,3 @@
-/* =========================================
-   1. GLOBAL RESETS & THEME
-   ========================================= */
 * {
   margin: 0;
   padding: 0;
@@ -16,11 +13,6 @@ body {
   color: #333;
 }
 
-/* =========================================
-   2. LAYOUT COMPONENTS (Header, Sidebar, Main)
-   ========================================= */
-
-/* Header */
 .header {
   background-color: #8c8279;
   color: white;
@@ -71,7 +63,6 @@ body {
   border: 2px solid #fff;
 }
 
-/* Profile Dropdown Menu */
 .profile-menu {
   display: none;
   position: absolute;
@@ -99,7 +90,6 @@ body {
   background-color: #f5f5f5;
 }
 
-/* Sidebar */
 .main-container {
   display: flex;
   flex: 1;
@@ -150,7 +140,6 @@ body {
   color: #7c7c7c;
 }
 
-/* Main Content Area */
 .content {
   flex: 1;
   background-color: #ffffff;
@@ -166,48 +155,37 @@ body {
   display: flex;
   align-items: center;
 }
-/* Card Container */
 .stat-item, .card {
   background: #fff;
-  padding: 30px; /* Increased padding for better spacing */
+  padding: 30px;
   flex: 1;
   min-width: 200px;
-  border-radius: 15px; /* Softer corners */
+  border-radius: 15px;
   
-  /* 🔴 NEW SHADOW EFFECT */
-  /* x-offset | y-offset | blur-radius | color (black with 15% opacity) */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
   
   display: flex;
   flex-direction: column;
-  /* Removed align-items: center so the table stretches fully */
   border: 1px solid #e5e7eb;
 }
 
 .breadcrumb-separator { margin: 0 15px; color: #aaa; font-weight: normal; }
 .current-page { color: #aaa; }
 
-/* =========================================
-   3. AESTHETIC FILTERS & SEARCH
-   ========================================= */
-
-/* Container for the whole row */
 .controls-row {
     display: flex;
-    align-items: flex-end; /* Aligns bottom of inputs perfectly */
+    align-items: flex-end;
     gap: 20px;
     margin-bottom: 25px;
     flex-wrap: wrap;
 }
 
-/* Individual Filter Group (Label + Input) */
 .filter-group {
     display: flex;
     flex-direction: column;
-    gap: 8px; /* Space between label and box */
+    gap: 8px;
 }
 
-/* Label Style */
 .filter-label {
     font-size: 14px;
     font-weight: 600;
@@ -215,7 +193,6 @@ body {
     margin-left: 4px;
 }
 
-/* AESTHETIC DROPDOWN STYLE */
 .styled-select {
     appearance: none;
     -webkit-appearance: none;
@@ -233,7 +210,6 @@ body {
     color: #444;
     cursor: pointer;
     
-    /* Custom Arrow Icon */
     background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%235a4a42%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
     background-position: right 15px center;
@@ -255,7 +231,6 @@ body {
     box-shadow: 0 0 0 3px rgba(90, 74, 66, 0.1);
 }
 
-/* Search Bar Container */
 .search-container {
     margin-left: auto;
     position: relative;
@@ -288,9 +263,6 @@ body {
     pointer-events: none;
 }
 
-/* =========================================
-   4. TABLE STYLES
-   ========================================= */
 .table-responsive { overflow-x: auto; margin-top: 20px; }
 table { width: 100%; border-collapse: collapse; }
 
@@ -304,16 +276,13 @@ td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; 
 .edit-btn { color: #333; }
 .delete-btn { color: #dc2626; border-color: #f87171; }
 
-/* =========================================
-   5. MODALS & FORMS
-   ========================================= */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background-color: rgba(0,0,0,0.5); z-index: 1000;
     display: none; justify-content: center; align-items: center;
 }
 .beige-modal {
-    background-color: #e6d7cb; /* Beige background */
+    background-color: #e6d7cb;
     padding: 30px; border-radius: 15px; width: 400px;
     position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     font-family: sans-serif;
@@ -328,7 +297,6 @@ td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; 
     text-align: center; color: #5a4a42; margin-bottom: 25px; margin-top: 0;
 }
 
-/* Form Inputs */
 .form-group { margin-bottom: 20px !important; margin-top: 0; }
 .form-group label {
     display: block; margin-bottom: 5px; font-weight: 600; color: #5a4a42; font-size: 14px;
@@ -341,29 +309,23 @@ td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; 
     background-color: #e9e0d9; color: #777; cursor: not-allowed;
 }
 
-/* =========================================
-   6. AESTHETIC SAVE BUTTON (UPDATED)
-   ========================================= */
 .form-actions { 
     text-align: center; 
-    margin-top: 50px !important; /* Pushes button down */
+    margin-top: 50px !important;
 }
 
 .btn-save-grey {
-    /* 1. Size & Shape */
     padding: 15px 60px !important; 
     min-width: 250px !important;   
     border: none;
     border-radius: 50px !important;
     
-    /* 2. Colors & Text */
-    background-color: #5a4a42 !important; /* Brown */
+    background-color: #5a4a42 !important;
     color: white !important;
     font-weight: 700;
     font-size: 18px !important;
     letter-spacing: 0.5px;
     
-    /* 3. Effects */
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(90, 74, 66, 0.25);
@@ -379,12 +341,8 @@ td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; 
     transform: translateY(0);
 }
 
-/* Modal Buttons for Delete */
 .modal-buttons { display: flex; justify-content: center; gap: 15px; }
 
-/* =========================================
-   7. TOAST NOTIFICATIONS
-   ========================================= */
 .notification-toast {
     visibility: hidden; min-width: 300px; background-color: #333; color: #fff;
     text-align: center; border-radius: 8px; padding: 16px; position: fixed;
@@ -396,7 +354,6 @@ td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; 
 .notification-toast.error { background-color: #f44336; }
 .notification-toast.show { visibility: visible; opacity: 1; top: 50px; }
 
-/* --- Modal Styles --- */
 .modal-overlay {
   display: none;
   position: fixed;

@@ -7,18 +7,17 @@
 
 body {
     min-height: 100vh;
-    display: flex; /* Use flex to center the main box */
+    display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
 }
 
-/* Background */
 .background-container {
     position: fixed;
     inset: 0;
     z-index: -1;
-    background-color: #000; /* Fallback color */
+    background-color: #000;
 }
 
 .background-img {
@@ -28,11 +27,10 @@ body {
     filter: blur(5px) brightness(0.7); 
 }
 
-/* Main box */
 .main-box {
-    background: rgba(255, 255, 255, 0.95); /* Slight transparency looks modern */
+    background: rgba(255, 255, 255, 0.95);
     width: 100%;
-    max-width: 900px; /* Limits width on big screens */
+    max-width: 900px;
     padding: 50px 30px;
     border-radius: 30px;
     text-align: center;
@@ -50,11 +48,10 @@ body {
     color: #666;
 }
 
-/* Role buttons grid */
 .buttons {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allows cards to wrap on mobile */
+    flex-wrap: wrap;
     gap: 30px;
 }
 
@@ -72,8 +69,8 @@ body {
 
 .role-card:hover {
     transform: translateY(-10px);
-    background: #fdfaf8; /* Very light tint on hover */
-    border-color: #d6c0b3; /* Match your sidebar color */
+    background: #fdfaf8;
+    border-color: #d6c0b3;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
@@ -90,10 +87,9 @@ body {
     mix-blend-mode: multiply;
 }
 
-/* Mobile Responsive adjustment */
 @media (max-width: 600px) {
     .role-card {
-        width: 100%; /* Full width cards on small phones */
+        width: 100%;
     }
     .main-box {
         padding: 30px 15px;

@@ -1,6 +1,3 @@
-/* =========================================
-   1. GLOBAL RESETS & THEME (From TeacherList)
-   ========================================= */
 * {
   margin: 0;
   padding: 0;
@@ -16,11 +13,6 @@ body {
   color: #333;
 }
 
-/* =========================================
-   2. LAYOUT COMPONENTS (Header, Sidebar, Main)
-   ========================================= */
-
-/* Header */
 .header {
   background-color: #8c8279;
   color: white;
@@ -71,7 +63,6 @@ body {
   border: 2px solid #fff;
 }
 
-/* Profile Dropdown Menu */
 .profile-menu {
   display: none;
   position: absolute;
@@ -99,7 +90,6 @@ body {
   background-color: #f5f5f5;
 }
 
-/* Sidebar */
 .main-container {
   display: flex;
   flex: 1;
@@ -150,7 +140,6 @@ body {
   color: #7c7c7c;
 }
 
-/* Main Content Area */
 .content {
   flex: 1;
   background-color: #ffffff;
@@ -169,7 +158,6 @@ body {
 .breadcrumb-separator { margin: 0 15px; color: #aaa; font-weight: normal; }
 .current-page { color: #aaa; }
 
-/* Card Container */
 .card {
   background: #fff;
   padding: 30px; 
@@ -182,21 +170,15 @@ body {
   border: 1px solid #e5e7eb;
 }
 
-/* =========================================
-   3. FILTERS & SEARCH
-   ========================================= */
-
-/* Container for the whole row */
 .controls-row {
     display: flex;
     align-items: flex-end;
-    justify-content: space-between; /* Adjusted for Student layout */
+    justify-content: space-between;
     gap: 20px;
     margin-bottom: 25px;
     flex-wrap: wrap;
 }
 
-/* Filter Group */
 .filter-group {
     display: flex;
     flex-direction: column;
@@ -210,7 +192,6 @@ body {
     margin-left: 4px;
 }
 
-/* Dropdown Style */
 .styled-select {
     appearance: none;
     -webkit-appearance: none;
@@ -235,7 +216,6 @@ body {
 .styled-select:hover { border-color: #d4c4b7; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 .styled-select:focus { border-color: #5a4a42; outline: none; }
 
-/* Search Bar */
 .search-container {
     position: relative;
     display: flex;
@@ -246,10 +226,10 @@ body {
     display: block; margin-bottom: 5px; font-weight: 600; color: #5a4a42; font-size: 14px;
 }
 .form-actions {
-    margin-top: 25px; /* Creates the gap you need above the button */
+    margin-top: 25px;
     padding-top: 10px;
     display: flex;
-    justify-content: center; /* Centers the Save button */
+    justify-content: center;
 }
 .form-control {
     width: 280px;
@@ -266,16 +246,13 @@ body {
 .form-control:focus { border-color: #5a4a42; outline: none; }
 .search-container i { position: absolute; right: 20px; color: #888; pointer-events: none; }
 
-/* =========================================
-   4. STUDENT SPECIFIC BUTTONS (NEW)
-   ========================================= */
 .btn-group {
     display: flex;
     gap: 10px;
 }
 
 .btn-custom {
-    padding: 0 20px; /* matched height with inputs */
+    padding: 0 20px;
     height: 45px;
     border-radius: 12px;
     border: none;
@@ -289,20 +266,17 @@ body {
 }
 
 .btn-new {
-    background-color:#8c8279; /* Matches theme brown */
+    background-color:#8c8279;
     color: white;
 }
 .btn-new:hover { background-color: #3e322c; transform: translateY(-2px); }
 
 .btn-del-all {
-    background-color: #d9534f; /* Red */
+    background-color: #d9534f;
     color: white;
 }
 .btn-del-all:hover { background-color: #c9302c; transform: translateY(-2px); }
 
-/* =========================================
-   5. TABLE STYLES
-   ========================================= */
 .table-responsive { overflow-x: auto; margin-top: 20px; }
 table { width: 100%; border-collapse: collapse; }
 
@@ -315,9 +289,6 @@ td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; 
 .delete-btn { color: #dc2626; border-color: #f87171; }
 .edit-btn:hover { background-color: #f0f0f0; }
 
-/* =========================================
-   6. MODALS
-   ========================================= */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background-color: rgba(0,0,0,0.5); z-index: 1000;
@@ -384,8 +355,6 @@ td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; 
   }
 }
 
-
-/* Modal Inputs */
 .edit-input {
     width: 100%; padding: 10px; border: 1px solid #d4c4b7;
     border-radius: 8px; box-sizing: border-box; font-size: 14px;
@@ -394,24 +363,18 @@ td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; 
     background-color: #e9e0d9; color: #777; cursor: not-allowed;
 }
 
-/* =========================================
-   7. SAVE BUTTONS (For Modals)
-   ========================================= */
 .btn-save-grey {
-    /* 1. Size & Shape */
     padding: 15px 60px !important; 
     min-width: 250px !important;   
     border: none;
     border-radius: 50px !important;
     
-    /* 2. Colors & Text */
-    background-color: #5a4a42 !important; /* Brown */
+    background-color: #5a4a42 !important;
     color: white !important;
     font-weight: 700;
     font-size: 18px !important;
     letter-spacing: 0.5px;
     
-    /* 3. Effects */
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(90, 74, 66, 0.25);
@@ -425,30 +388,21 @@ td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; 
 .btn-save-grey:active {
     transform: translateY(0);
 }
-/* =========================================
-   9. CARD FOOTER (Button Layout)
-   ========================================= */
 .card-footer {
     display: flex;
-    justify-content: flex-end; /* Aligns buttons to the LEFT */
-    gap: 15px;                   /* Space between the two buttons */
-    margin-top: 10px;            /* Push away from the table */
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 10px;
     padding-top: 10px;
-    border-top: 1px solid #eee;  /* Optional: faint line to separate footer */
+    border-top: 1px solid #eee;
 }
 
-/* =========================================
-   10. CARD HEADER ACTIONS (Top Button)
-   ========================================= */
 .card-header-actions {
     display: flex;
-    justify-content: flex-end; /* Align button to the RIGHT */
-    margin-bottom: 10px;       /* Space between Button and Search Bar */
+    justify-content: flex-end;
+    margin-bottom: 10px;
 }
 
-/* =========================================
-   8. TOAST NOTIFICATIONS
-   ========================================= */
 .notification-toast {
     visibility: hidden; min-width: 300px; background-color: #333; color: #fff;
     text-align: center; border-radius: 8px; padding: 16px; position: fixed;
@@ -460,7 +414,6 @@ td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; 
 .notification-toast.error { background-color: #f44336; }
 .notification-toast.show { visibility: visible; opacity: 1; top: 50px; }
 
-/* Color Palette & Movement */
 :root {
     --primary-brown: #5a4a42;
     --soft-beige: #fdfaf8;
@@ -469,7 +422,6 @@ td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; 
     --transition-speed: 0.3s;
 }
 
-/* Modal Animation */
 .modal-overlay {
     transition: opacity var(--transition-speed) ease-in-out;
 }
@@ -483,10 +435,6 @@ td { padding: 12px 15px; border-bottom: 1px solid #eee; vertical-align: middle; 
     transform: scale(1);
 }
 
-/* Action Button Movement */
-
-
-/* Toast Slide-In */
 .notification-toast {
     top: -100px;
     transition: top 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.5s;
