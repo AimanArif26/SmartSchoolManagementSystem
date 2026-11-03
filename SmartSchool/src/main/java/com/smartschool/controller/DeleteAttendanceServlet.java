@@ -27,7 +27,6 @@ public class DeleteAttendanceServlet extends HttpServlet {
 
         try (Connection conn = OracleDBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            
             ps.setInt(1, Integer.parseInt(classId));
             if ("day".equals(mode) || "year".equals(mode)) {
                 ps.setString(2, value);

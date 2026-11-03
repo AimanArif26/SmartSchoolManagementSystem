@@ -12,7 +12,6 @@ import jakarta.servlet.annotation.WebServlet;
 
 @WebServlet("/GuardianAttendanceServlet") 
 public class GuardianAttendanceServlet extends HttpServlet {
-
     private UserDAO userDAO;
 
     @Override
@@ -21,7 +20,6 @@ public class GuardianAttendanceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession session = request.getSession();
         if (session.getAttribute("guardian") == null) {
             response.sendRedirect(request.getContextPath() + "/guardian/guardianLogin.jsp");
@@ -33,7 +31,6 @@ public class GuardianAttendanceServlet extends HttpServlet {
 
         if (month == null || month.isEmpty()) { month = "ALL"; }
 
-        // Fetch Data
         Student student = userDAO.getStudentDetailsByIC(studIC);
         List<Attendance> attendanceList = userDAO.getStudentAttendanceByGuardian(studIC, month);
 

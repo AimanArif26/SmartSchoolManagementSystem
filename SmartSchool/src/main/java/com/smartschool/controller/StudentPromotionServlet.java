@@ -13,10 +13,8 @@ import com.smartschool.util.OracleDBConnection;
 
 @WebServlet("/StudentPromotionServlet")
 public class StudentPromotionServlet extends HttpServlet {
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        
         String action = request.getParameter("action");
         String studIC = request.getParameter("studIC");
         String yearFilter = request.getParameter("year");
@@ -44,7 +42,6 @@ public class StudentPromotionServlet extends HttpServlet {
         String graduateSql = "UPDATE STUDENT SET STUD_STATUS = 'INACTIVE' WHERE STUD_YEAR = 6";
         String upgradeSql = "UPDATE STUDENT SET STUD_YEAR = STUD_YEAR + 1 WHERE STUD_YEAR < 6";
 
-        // If a specific year is filtered (e.g., only promote Year 2s)
         if (yearFilter != null && !yearFilter.isEmpty()) {
             graduateSql += " AND STUD_YEAR = " + yearFilter;
             upgradeSql += " AND STUD_YEAR = " + yearFilter;
@@ -54,7 +51,6 @@ public class StudentPromotionServlet extends HttpServlet {
             conn.setAutoCommit(false);
             try (PreparedStatement ps1 = conn.prepareStatement(graduateSql);
                  PreparedStatement ps2 = conn.prepareStatement(upgradeSql)) {
-                
                 ps1.executeUpdate();
                 ps2.executeUpdate();
                 

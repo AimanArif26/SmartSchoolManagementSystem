@@ -11,7 +11,6 @@ import java.util.List;
 
 @WebServlet("/GuardianExaminationServlet")
 public class GuardianExaminationServlet extends HttpServlet {
-
     private UserDAO userDAO;
 
     @Override
@@ -22,36 +21,30 @@ public class GuardianExaminationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String studIC = request.getParameter("id");
         String examType = request.getParameter("examType");
         String academicYear = request.getParameter("academicYear");
 
-        // 1. Set Defaults if parameters are missing
         if (examType == null || examType.trim().isEmpty()) {
             examType = "Mid-Term"; 
         }
         
         if (academicYear == null || academicYear.trim().isEmpty()) {
-            academicYear = "2026"; // Default or current year
+            academicYear = "2026";
         }
 
-        // 2. Security Check
         if (studIC == null || studIC.trim().isEmpty()) {
             response.sendRedirect(request.getContextPath() + "/guardian/guardianHomepage.jsp");
             return;
         }
 
         try {
-            // 3. Fetch Data based on filters
             Student student = userDAO.getStudentDetailsByIC(studIC);
             
             List<Examination> examList = userDAO.getStudentExamsByIC(studIC, examType, academicYear);
 
-            // Fetch all exams for the progress graph (usually across all years or just the current)
             List<Examination> allExams = userDAO.getAllStudentExamsByIC(studIC);
 
-            // 4. Set Attributes for JSP
             request.setAttribute("studentDetails", student);
             request.setAttribute("examList", examList);
             request.setAttribute("allExams", allExams); 

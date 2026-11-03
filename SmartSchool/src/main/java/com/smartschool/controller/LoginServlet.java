@@ -15,7 +15,6 @@ public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String role = request.getParameter("role"); 
@@ -24,16 +23,13 @@ public class LoginServlet extends HttpServlet {
         User user = userDao.loginCheck(email, password, role);
 
         if (user != null) {
-            // --- LOGIN SUCCESS ---
             HttpSession session = request.getSession();
             session.setAttribute("currentUser", user);
             session.setAttribute("TeacherID", user.getUserId());
             
             response.sendRedirect(role + "/" + role + "Homepage.jsp"); 
         } else {
-            
             if ("teacher".equals(role)) {
-
                 response.sendRedirect("teacher/teacherLogin.html?error=1");
             } 
             else if ("admin".equals(role)) {

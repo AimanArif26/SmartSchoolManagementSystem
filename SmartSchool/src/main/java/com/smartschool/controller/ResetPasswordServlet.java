@@ -15,7 +15,6 @@ import com.smartschool.util.OracleDBConnection;
 public class ResetPasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        
         HttpSession session = request.getSession();
         Integer userId = (Integer) session.getAttribute("resetUserId");
         String newPassword = request.getParameter("newPassword");
@@ -26,7 +25,6 @@ public class ResetPasswordServlet extends HttpServlet {
         }
 
         try (Connection conn = OracleDBConnection.getConnection()) {
-            // Update the password for the specific User ID
             String sql = "UPDATE USERS SET PASSWORD = ? WHERE USER_ID = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, newPassword);
@@ -35,7 +33,6 @@ public class ResetPasswordServlet extends HttpServlet {
             int rowsUpdated = ps.executeUpdate();
 
             if (rowsUpdated > 0) {
-                // Clear the temporary session and redirect to choice page with success
                 session.removeAttribute("resetUserId");
                 response.sendRedirect("choice.html?status=success");
             }

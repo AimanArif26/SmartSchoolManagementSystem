@@ -26,7 +26,6 @@ public class ValidationServlet extends HttpServlet {
             if ("approve".equals(action)) {
                 conn.setAutoCommit(false);
                 try {
-                    // Updated SQL to include TEACHER_ROLE
                     String sqlTeacher = "UPDATE TEACHER SET HEAD_TEACHER_ID = ?, STATUS = 'approved', TEACHER_ROLE = ? WHERE TEACHER_ID = ?";
                     PreparedStatement ps1 = conn.prepareStatement(sqlTeacher);
                     
@@ -55,13 +54,11 @@ public class ValidationServlet extends HttpServlet {
             } else if ("reject".equals(action)) {
                 conn.setAutoCommit(false); 
                 try {
-
                     String deleteTeacher = "DELETE FROM TEACHER WHERE TEACHER_ID = ?";
                     PreparedStatement ps1 = conn.prepareStatement(deleteTeacher);
                     ps1.setInt(1, teacherId);
                     ps1.executeUpdate();
 
-                    // Note: If teacherId is the same as userId, this works:
                     String deleteUser = "DELETE FROM USERS WHERE USER_ID = ?";
                     PreparedStatement ps2 = conn.prepareStatement(deleteUser);
                     ps2.setInt(1, teacherId);

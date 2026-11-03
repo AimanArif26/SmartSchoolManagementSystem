@@ -23,7 +23,6 @@ public class TeacherListServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        
         String status = request.getParameter("status");
 
         if (status == null || status.isEmpty() || status.startsWith("success") || "fail".equals(status) || "error".equals(status)) {
@@ -40,13 +39,11 @@ public class TeacherListServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        
         String action = request.getParameter("action");
         String redirectUrl = "TeacherListServlet"; 
 
         try {
             if ("delete".equals(action)) {
-                // --- DELETE ACTION ---
                 String idStr = request.getParameter("teacherId");
                 int teacherId = Integer.parseInt(idStr);
                 
@@ -59,7 +56,6 @@ public class TeacherListServlet extends HttpServlet {
                 }
 
             } else if ("edit".equals(action)) {
-                // --- UPDATE LOGIC ---
                 int id = Integer.parseInt(request.getParameter("editTeacherId"));
                 String phone = request.getParameter("editPhone");
                 
@@ -73,7 +69,6 @@ public class TeacherListServlet extends HttpServlet {
                     response.sendRedirect(redirectUrl + "?status=fail");
                 }
             } else {
-                // Fallback
                 response.sendRedirect(redirectUrl);
             }
             

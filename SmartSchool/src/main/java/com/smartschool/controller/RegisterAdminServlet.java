@@ -21,11 +21,9 @@ public class RegisterAdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        
         HttpSession session = request.getSession();
         User currentUser = (User) session.getAttribute("currentUser");
 
-        // Only allow USER_ID = 1 to perform this action
         if (currentUser == null || currentUser.getUserId() != 1) {
             response.sendRedirect("admin/adminProfile.jsp?status=unauthorized");
             return;
@@ -54,36 +52,31 @@ public class RegisterAdminServlet extends HttpServlet {
         PreparedStatement psAdmin = null;
         ResultSet rs = null;
 
-        // SQL 1: Insert into USERS table (Parent)
         String userSql = "INSERT INTO USERS (EMAIL, PASSWORD, ROLE) VALUES (?, ?, 'admin')";
-        // SQL 2: Insert into ADMIN child table (Inheritance link)
         String adminSql = "INSERT INTO ADMIN (USER_ID) VALUES (?)";
 
         try {
             conn = OracleDBConnection.getConnection();
-            conn.setAutoCommit(false); // Enable Transaction for data integrity
+            conn.setAutoCommit(false);
 
-            // Step 1: Insert into USERS
             String[] generatedColumns = {"USER_ID"}; 
             psUser = conn.prepareStatement(userSql, generatedColumns);
             psUser.setString(1, email);
             psUser.setString(2, password);
             psUser.executeUpdate();
 
-            // Step 2: Get the generated USER_ID
             rs = psUser.getGeneratedKeys();
             int newUserId = 0;
             if (rs.next()) {
                 newUserId = rs.getInt(1);
             }
 
-            // Step 3: Insert into ADMIN child table
             if (newUserId > 0) {
                 psAdmin = conn.prepareStatement(adminSql);
                 psAdmin.setInt(1, newUserId);
                 psAdmin.executeUpdate();
 
-                conn.commit(); // Transaction success
+                conn.commit();
                 return true;
             } else {
                 conn.rollback();
@@ -91,10 +84,9 @@ public class RegisterAdminServlet extends HttpServlet {
             }
 
         } catch (SQLException e) {
-            if (conn != null) conn.rollback(); // Undo everything on failure
+            if (conn != null) conn.rollback();
             throw e;
         } finally {
-            // Standard resource cleanup
             if (rs != null) rs.close();
             if (psUser != null) psUser.close();
             if (psAdmin != null) psAdmin.close();

@@ -18,7 +18,6 @@ public class AssignServlet extends HttpServlet {
         String classId = request.getParameter("classId");
         String academicYear = request.getParameter("academicYear");
 
-        // Simple check to ensure data is present
         if (teacherId == null || subjectId == null || classId == null || academicYear == null) {
             response.sendRedirect("admin/assignment.jsp?error=missing");
             return;
@@ -28,7 +27,6 @@ public class AssignServlet extends HttpServlet {
 
         try (Connection conn = OracleDBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            
             ps.setInt(1, Integer.parseInt(teacherId));
             ps.setInt(2, Integer.parseInt(subjectId));
             ps.setInt(3, Integer.parseInt(classId));

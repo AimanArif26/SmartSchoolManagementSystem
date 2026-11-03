@@ -17,30 +17,25 @@ public class ClassServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        
         String action = request.getParameter("action");
         String teacherIdStr = request.getParameter("teacherId");
         UserDAO dao = new UserDAO();
 
         try (Connection conn = OracleDBConnection.getConnection()) {
-            
-            // --- STEP 1: TEACHER AVAILABILITY VALIDATION ---
             if (teacherIdStr != null && !teacherIdStr.isEmpty()) {
                 int teacherId = Integer.parseInt(teacherIdStr);
                 Integer currentClassId = null;
                 
-                // If updating, we must ignore the current class ID in the validation
                 if ("update".equals(action)) {
                     currentClassId = Integer.parseInt(request.getParameter("classId"));
                 }
 
                 if (dao.isTeacherAlreadyAssigned(teacherId, currentClassId)) {
                     response.sendRedirect("admin/class.jsp?status=teacherTaken");
-                    return; // Stop execution if teacher is already taken
+                    return;
                 }
             }
 
-            // --- STEP 2: DATABASE OPERATIONS ---
             if ("add".equals(action)) {
                 String sql = "INSERT INTO CLASSROOM (CLASS_NAME, ACADEMIC_YEAR, TEACHER_ID) VALUES (?, ?, ?)";
                 try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -84,14 +79,12 @@ public class ClassServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        
         String action = request.getParameter("action");
         
         if ("delete".equals(action)) {
             String classId = request.getParameter("classId");
             
             try (Connection conn = OracleDBConnection.getConnection()) {
-                // DELETE CHILD RECORDS FIRST to avoid Integrity Constraint violations
                 String deleteAssignmentsSql = "DELETE FROM TEACHER_ASSIGNMENT WHERE CLASS_ID = ?";
                 try (PreparedStatement ps1 = conn.prepareStatement(deleteAssignmentsSql)) {
                     ps1.setInt(1, Integer.parseInt(classId));

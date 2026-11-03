@@ -15,11 +15,9 @@ import com.smartschool.dao.UserDAO;
 
 @WebServlet("/RegisterGuardianServlet")
 public class RegisterGuardianServlet extends HttpServlet {
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String guardianIC = request.getParameter("guardianIC");
         String email = request.getParameter("email");
         String password = request.getParameter("password");

@@ -14,11 +14,9 @@ import com.smartschool.util.OracleDBConnection;
 
 @WebServlet("/admin/UpdateStudentServlet")
 public class UpdateStudentServlet extends HttpServlet {
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        
     	String studIC = request.getParameter("studIC");
     	String yearStr = request.getParameter("year");
     	String className = request.getParameter("className");
@@ -29,7 +27,6 @@ public class UpdateStudentServlet extends HttpServlet {
 
     	try (Connection conn = OracleDBConnection.getConnection();
     	     PreparedStatement ps = conn.prepareStatement(sql)) {
-    	    
     	    ps.setInt(1, Integer.parseInt(yearStr));
     	    ps.setString(2, className);
     	    ps.setInt(3, Integer.parseInt(yearStr));
