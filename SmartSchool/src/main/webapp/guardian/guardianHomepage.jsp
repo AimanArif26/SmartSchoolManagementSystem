@@ -49,7 +49,6 @@
             max-width: 1200px;
         }
 
-        /* Dashboard Header */
         .dashboard-header {
             margin-bottom: 30px;
         }
@@ -65,7 +64,6 @@
             color: #333;
         }
 
-        /* Card Grid Layout */
         .student-card-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -73,7 +71,6 @@
             margin-top: 20px;
         }
 
-        /* Modernized Student Card */
         .student-card {
             background: #ffffff;
             border-radius: 20px;
@@ -111,7 +108,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Badge/Tag styling */
         .student-meta {
             margin-bottom: 25px;
         }
@@ -128,9 +124,8 @@
             margin: 2px;
         }
 
-        /* Button Styling */
         .see-more-btn {
-            background-color: #8c8279; /* Use your theme brown */
+            background-color: #8c8279;
             color: white;
             border: none;
             padding: 12px 30px;
@@ -147,7 +142,6 @@
             background-color: #746260;
         }
 
-        /* Empty State */
         .empty-state {
             text-align: center;
             padding: 50px;
@@ -157,7 +151,7 @@
         #preloader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #fcfbf9; /* Soft Off-White to match page */
+            background-color: #fcfbf9;
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -175,8 +169,8 @@
 
         .loader-ring {
             width: 45px; height: 45px;
-            border: 3px solid rgba(90, 74, 66, 0.15); /* Light Brown Transparent */
-            border-top: 3px solid #5a4a42; /* Primary Brown */
+            border: 3px solid rgba(90, 74, 66, 0.15);
+            border-top: 3px solid #5a4a42;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -262,7 +256,6 @@
 		</div>
 	</div>
     <script>
-        // Profile Menu Logic
         const profileBtn = document.getElementById("profileBtn");
         const profileMenu = document.getElementById("profileMenu");
 
@@ -271,12 +264,10 @@
             profileMenu.style.display = profileMenu.style.display === "block" ? "none" : "block";
         };
 
-        // Close menu when clicking anywhere else
         window.onclick = () => {
             profileMenu.style.display = "none";
         };
 
-        // Logout 
         const logoutOption = document.getElementById('logoutOption');
         const logoutModal = document.getElementById('logoutModal');
         const cancelLogout = document.getElementById('cancelLogout');

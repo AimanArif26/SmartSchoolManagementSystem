@@ -99,14 +99,12 @@
     </div>
 
     <script>
-      // Sidebar Toggle
       const menuToggle = document.getElementById("menu-toggle");
       const sidebar = document.getElementById("sidebar");
       menuToggle.addEventListener("click", () => {
         sidebar.classList.toggle("collapsed");
       });
 
-      // Profile Menu Toggle
       const profileBtn = document.getElementById("profileBtn");
       const profileMenu = document.getElementById("profileMenu");
       profileBtn.addEventListener("click", (e) => {
@@ -115,12 +113,10 @@
           profileMenu.style.display === "block" ? "none" : "block";
       });
 
-      // Close dropdown on outside click
       window.addEventListener("click", () => {
         profileMenu.style.display = "none";
       });
 
-      // Logout
       const logoutOption = document.getElementById("logoutOption");
       const logoutModal = document.getElementById("logoutModal");
       const cancelLogout = document.getElementById("cancelLogout");
@@ -139,7 +135,6 @@
         () => (window.location.href = "../choice.html")
       );
 
-      // Dark Mode Toggle
       document.getElementById("darkToggle").addEventListener("click", () => {
         document.body.classList.toggle("dark-theme");
       });

@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/webp" href="../assets/image/sksmLOGO.webp">
     <style>
-        /* Existing Modal CSS */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: none; justify-content: center; align-items: center; z-index: 1000; }
         .modal-box { background: #fff; padding: 30px; border-radius: 20px; max-width: 500px; width: 85%; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 15px; }
         .modal-ok-btn { background-color: #C4A484; color: #3e2723; border: none; padding: 6px 20px; font-size: 0.85rem; font-family: 'Inter', sans-serif; font-weight: 700; border-radius: 50px; cursor: pointer; margin-top: 10px; }
@@ -25,7 +24,6 @@
 </head>
 
 <body>
-    <%-- SUCCESS POPUP --%>
     <% if ("1".equals(success)) { %>
     <div id="successModal" class="modal-overlay" style="display: flex;">
         <div class="modal-box">
@@ -43,7 +41,6 @@
         <div class="register-box">
             <form action="../RegisterGuardianServlet" method="post">
                 
-                <%-- EMAIL FIELD --%>
                 <input type="email" name="email" placeholder="Email" required 
                        value="<%= email %>"
                        style="<%= "emailTaken".equals(error) ? "border: 1px solid red; margin-bottom: 5px;" : "" %>">
@@ -52,7 +49,6 @@
                     <span class="error-text">Account with this email already exists.</span>
                 <% } %>
 
-                <%-- IC FIELD --%>
                 <input type="text" name="guardianIC" placeholder="MyKad Number" required maxlength="12" 
                        value="<%= guardianIC %>"
                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
@@ -62,7 +58,6 @@
                     <span class="error-text">MyKad number not found in student records.</span>
                 <% } %>
 
-                <%-- PASSWORD FIELDS --%>
                 <div class="password-wrap">
                     <input type="password" name="password" placeholder="Password" required
                            style="<%= "passwordMismatch".equals(error) ? "border: 1px solid red;" : "" %>">
@@ -86,7 +81,6 @@
     </div>
 
     <script>
-        // Password visibility toggle
         document.querySelectorAll('.toggle-icon').forEach(icon => {
             icon.addEventListener('click', function() {
                 const input = this.parentElement.querySelector('input');

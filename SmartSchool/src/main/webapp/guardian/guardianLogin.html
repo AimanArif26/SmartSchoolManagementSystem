@@ -71,41 +71,33 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            
-            // 1. NEW: Check URL for ?error=1
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('error') === '1') {
                 const emailInput = document.getElementById('email');
                 const passwordInput = document.getElementById('password');
                 const errorDiv = document.getElementById('errorMessage');
 
-                // Turn Email Border Red
                 if (emailInput) {
                     emailInput.style.border = "1px solid red";
                 }
 
-                // Turn Password Border Red
                 if (passwordInput) {
                     passwordInput.style.border = "1px solid red";
                 }
                 
-                // Show Error Message
                 if (errorDiv) {
                     errorDiv.style.display = "block";
                 }
             }
 
-            // 2. EXISTING: Eye Mask Logic
             const togglePassword = document.querySelector('#togglePassword');
             const password = document.querySelector('#password');
 
             if (togglePassword && password) {
                 togglePassword.addEventListener('click', function (e) {
-                    // Toggle the type attribute
                     const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
                     password.setAttribute('type', type);
 
-                    // Toggle the eye icon
                     if (type === 'text') {
                         this.classList.remove('fa-eye-slash');
                         this.classList.add('fa-eye');

@@ -30,7 +30,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/validate.css" />
 
     <style>
-        /* 1. SCROLL & LAYOUT FIX */
         html, body {
             height: auto;
             overflow-y: auto;
@@ -41,7 +40,7 @@
         .main-container {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center content */
+            align-items: center;
             padding: 40px 20px;
             min-height: calc(100vh - 70px);
             height: auto;
@@ -52,7 +51,6 @@
             max-width: 1000px;
         }
 
-        /* 2. PROFILE HEADER */
         .profile-banner {
             background: #ffffff;
             padding: 30px;
@@ -71,7 +69,6 @@
             letter-spacing: 1px;
         }
 
-        /* 3. CARD GRID */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -109,7 +106,6 @@
             font-size: 1.1rem;
         }
 
-        /* 4. MODAL STYLES */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -222,7 +218,6 @@
 	</div>
 
 	<script>
-    // Profile menu logic
     const profileBtn = document.getElementById("profileBtn");
     const profileMenu = document.getElementById("profileMenu");
 
@@ -235,7 +230,6 @@
         profileMenu.style.display = "none";
     });
 
-    // Logout Modal Logic
     const logoutOption = document.getElementById('logoutOption');
     const logoutModal = document.getElementById('logoutModal');
     const cancelLogout = document.getElementById('cancelLogout');

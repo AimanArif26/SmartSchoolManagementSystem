@@ -34,7 +34,6 @@
         .main-container { display: flex; flex-direction: column; align-items: center; padding: 40px 20px; min-height: 100vh; }
         .content-wrapper { width: 100%; max-width: 900px; }
         
-        /* Clean Filter Design */
         .attendance-header { background: white; padding: 30px; border-radius: 20px; border: 1px solid #e7d6c8; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
         .status-badge { padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; }
         .status-present { background: #d4edda; color: #155724; }
@@ -176,13 +175,11 @@
 	</div>
 	
 		<script>
-        // Profile Menu Toggle
         document.getElementById("profileBtn").addEventListener("click", function() {
             const menu = document.getElementById("profileMenu");
             menu.style.display = (menu.style.display === "block") ? "none" : "block";
         });
 
-        // Logout 
         const logoutOption = document.getElementById('logoutOption');
         const logoutModal = document.getElementById('logoutModal');
         const cancelLogout = document.getElementById('cancelLogout');
@@ -192,7 +189,6 @@
         cancelLogout.addEventListener('click', () => logoutModal.style.display = 'none');
         confirmLogout.addEventListener('click', () => window.location.href = '../choice.html');
 
-        // Close menu if clicking outside
         window.onclick = function(event) {
             if (!event.target.matches('#profileBtn') && !event.target.matches('.profile-image') && !event.target.matches('.user-name')) {
                 document.getElementById("profileMenu").style.display = "none";

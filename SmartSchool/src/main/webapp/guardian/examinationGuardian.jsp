@@ -52,7 +52,6 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/homepage.css"><link rel="icon" type="image/webp" href="<%=request.getContextPath()%>/assets/image/sksmLOGO.webp">
 <style>
-/* Shared Styles */
 html, body {
 	height: auto;
 	overflow-y: auto;
@@ -152,7 +151,6 @@ html, body {
 	font-weight: bold;
 }
 
-/* Modal Fix */
 .modal-overlay {
 	display: none;
 	position: fixed;
@@ -169,7 +167,6 @@ html, body {
 	border-radius: 15px;
 	text-align: center;
 }
-/* Container for the filter */
 .filter-wrapper {
     display: flex;
     align-items: center;
@@ -417,7 +414,6 @@ const currentYear = "<%= request.getAttribute("currentAcademicYear") %>";
         document.getElementById('graphView').style.display = (view === 'graph') ? 'block' : 'none';
         
         if(view === 'graph') {
-            // Delay slightly to ensure the DOM is visible before Chart.js renders
             setTimeout(() => {
                 updateChartBySubject();
             }, 100);
@@ -474,7 +470,7 @@ const currentYear = "<%= request.getAttribute("currentAcademicYear") %>";
     function showNoDataState() {
         if (myChart) {
             myChart.destroy();
-            myChart = null; // Ensure it's fully cleared
+            myChart = null;
         }
         document.getElementById('performanceChart').style.display = 'none';
         
@@ -482,7 +478,7 @@ const currentYear = "<%= request.getAttribute("currentAcademicYear") %>";
         if (!msgDiv) {
             msgDiv = document.createElement('div');
             msgDiv.id = 'noDataMsg';
-            msgDiv.className = 'results-card'; // Use your existing CSS for styling
+            msgDiv.className = 'results-card';
             msgDiv.style.textAlign = 'center';
             msgDiv.style.padding = '40px';
             msgDiv.innerHTML = '<i class="fas fa-chart-area fa-3x" style="color:#ccc; margin-bottom:15px; display:block;"></i>' +
@@ -490,7 +486,6 @@ const currentYear = "<%= request.getAttribute("currentAcademicYear") %>";
             document.getElementById('performanceChart').parentNode.appendChild(msgDiv);
         }
     }
-    // Profile Menu Logic
     const profileBtn = document.getElementById("profileBtn");
     const profileMenu = document.getElementById("profileMenu");
     profileBtn.onclick = (e) => {
@@ -500,7 +495,6 @@ const currentYear = "<%= request.getAttribute("currentAcademicYear") %>";
     document.addEventListener("click", () => profileMenu.style.display = "none");
     document.getElementById('logoutOption').onclick = () => document.getElementById('logoutModal').style.display = 'flex';
     
- // Logout 
     const logoutOption = document.getElementById('logoutOption');
     const logoutModal = document.getElementById('logoutModal');
     const cancelLogout = document.getElementById('cancelLogout');
@@ -510,7 +504,6 @@ const currentYear = "<%= request.getAttribute("currentAcademicYear") %>";
     cancelLogout.addEventListener('click', () => logoutModal.style.display = 'none');
     confirmLogout.addEventListener('click', () => window.location.href = 'choice.html');
 
-    // Close menu if clicking outside
     window.onclick = function(event) {
         if (!event.target.matches('#profileBtn') && !event.target.matches('.profile-image') && !event.target.matches('.user-name')) {
             document.getElementById("profileMenu").style.display = "none";

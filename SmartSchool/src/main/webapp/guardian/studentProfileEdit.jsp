@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../assets/css/homepage.css" />
     <link rel="icon" type="image/webp" href="<%=request.getContextPath()%>/assets/image/sksmLOGO.webp">
     <style>
-      /* PROFILE SPECIFIC STYLES */
       .profile-grid {
         display: grid;
         grid-template-columns: 320px 1fr;
@@ -20,7 +19,6 @@
         margin: 0 auto;
       }
 
-      /* Left Side Card */
       .profile-card-left {
         background: white;
         padding: 40px 20px;
@@ -57,7 +55,6 @@
         margin-bottom: 20px;
       }
 
-      /* Right Side Details */
       .profile-details-right {
         background: white;
         padding: 40px;
@@ -97,7 +94,6 @@
         border-radius: 4px;
       }
 
-      /* Action Buttons */
       .profile-actions {
         margin-top: 30px;
         display: flex;
@@ -124,7 +120,6 @@
         transform: translateY(-2px);
       }
 
-      /* Responsive */
       @media (max-width: 850px) {
         .profile-grid {
           grid-template-columns: 1fr;
@@ -291,7 +286,6 @@
     </div>
 
     <script>
-      // --- SIDEBAR & MENU LOGIC ---
       const menuToggle = document.getElementById("menu-toggle");
       const sidebar = document.getElementById("sidebar");
 
@@ -313,7 +307,6 @@
         () => (profileMenu.style.display = "none")
       );
 
-      // --- LOGOUT LOGIC ---
       const logoutOption = document.getElementById("logoutOption");
       const logoutModal = document.getElementById("logoutModal");
 
@@ -330,41 +323,26 @@
         window.location.href = "../choice.html";
       });
 
-      // --- DARK MODE ---
       document.getElementById("darkToggle").addEventListener("click", () => {
         document.body.classList.toggle("dark-theme");
       });
 
-      // --- PROFILE UPDATE LOGIC ---
       const editModal = document.getElementById("editProfileModal");
 
-      /**
-       * Opens the edit modal and pre-fills the input with
-       * the current address displayed on the page.
-       */
       function openEditModal() {
-        // Find the current address on the screen
-        // We use index [6] because Address is the 7th '.value' element
         const currentAddress = document
           .querySelectorAll(".value")[6]
           .innerText.trim();
 
-        // Set the input field to match current address
         document.getElementById("editAddress").value = currentAddress;
 
         editModal.style.display = "flex";
       }
 
-      /**
-       * Closes the edit modal.
-       */
       function closeEditModal() {
         editModal.style.display = "none";
       }
 
-      /**
-       * Saves the new address to the UI.
-       */
       function saveProfile() {
         const newAddress = document.getElementById("editAddress").value;
 
@@ -373,7 +351,6 @@
           return;
         }
 
-        // Update the UI: Index 6 corresponds to the Address row
         const valueElements = document.querySelectorAll(".value");
         if (valueElements[6]) {
           valueElements[6].innerText = newAddress;
@@ -383,7 +360,6 @@
         closeEditModal();
       }
 
-      // Close modal if user clicks anywhere outside of the modal box
       window.onclick = function (event) {
         if (event.target == editModal) {
           closeEditModal();

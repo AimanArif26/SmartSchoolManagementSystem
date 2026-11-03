@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/homepage.css">
 	<link rel="icon" type="image/webp" href="<%=request.getContextPath()%>/assets/image/sksmLOGO.webp">
     <style>
-/* SCROLL & LAYOUT FIX */
 html, body {
 	height: auto;
 	overflow-y: auto;
@@ -44,7 +43,6 @@ html, body {
 	max-width: 1100px;
 }
 
-/* PROFILE GRID */
 .profile-grid {
 	display: grid;
 	grid-template-columns: 320px 1fr;
@@ -110,7 +108,6 @@ html, body {
 	background-color: #746260;
 }
 
-/* MODAL FIXES */
 .modal-overlay {
 	position: fixed;
 	inset: 0;
@@ -142,7 +139,6 @@ html, body {
 
 .btn-back {
 	background-color: #333;
-	/* Dark grey to contrast with the 'Update' button */
 	color: white;
 	padding: 12px 30px;
 	border-radius: 25px;
@@ -270,7 +266,6 @@ html, body {
 		</div>
 	</div>
     <script>
-    // --- Existing Profile Dropdown & Modal Logic ---
     const profileBtn = document.getElementById("profileBtn");
     const profileMenu = document.getElementById("profileMenu");
     
@@ -285,7 +280,6 @@ html, body {
     function openEditModal() { editModal.style.display = "flex"; }
     function closeEditModal() { editModal.style.display = "none"; }
 
-    // --- SUCCESS POPUP LOGIC (Copied from Teacher Profile) ---
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         
@@ -302,7 +296,6 @@ html, body {
         }
     }
 
-    // --- Logout Logic ---
     document.getElementById("logoutOption").onclick = () => {
         document.getElementById("logoutModal").style.display = "flex";
     };
