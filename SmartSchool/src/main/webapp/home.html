@@ -14,9 +14,6 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* =========================================
-           1. DARK LUXURY THEME CONFIGURATION
-           ========================================= */
         :root {
             --bg-dark: #1A1614;       
             --bg-card: #241E1B;       
@@ -42,14 +39,10 @@
             font-weight: 600;
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-dark); }
         ::-webkit-scrollbar-thumb { background: var(--accent-taupe); border-radius: 4px; }
 
-        /* =========================================
-           2. PRELOADER STYLES
-           ========================================= */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: var(--bg-dark);
@@ -75,21 +68,18 @@
         .loader-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
-            color: var(--text-beige); /* Matches your theme color */
+            color: var(--text-beige);
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-top: 10px;
             margin-bottom: 25px;
             font-weight: 600;
-            animation: breathe 2s infinite ease-in-out; /* Syncs with the logo animation */
+            animation: breathe 2s infinite ease-in-out;
         }
 
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.8; } }
 
-        /* =========================================
-           3. NAVIGATION
-           ========================================= */
         .navbar {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 25px 50px; display: flex; justify-content: space-between; align-items: center;
@@ -139,9 +129,6 @@
             .navbar { padding: 20px; }
         }
 
-        /* =========================================
-           4. HERO SECTION
-           ========================================= */
         .hero {
             height: 100vh; width: 100%; position: relative; overflow: hidden;
             display: flex; align-items: center; justify-content: center;
@@ -203,15 +190,12 @@
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(30px); } }
         @media(max-width:768px){ .hero-title{font-size: 3.5rem;} .hero-title span.italic{font-size: 2.5rem;} .hero-actions{flex-direction: column;} }
 
-        /* =========================================
-           5. INFO CARDS
-           ========================================= */
         .stats-wrapper {
             position: relative; z-index: 10; margin-top: -80px; padding: 0 5%;
         }
         .stats-grid {
             display: grid; grid-template-columns: repeat(4, 1fr);
-            background: var(--bg-card); /* Dark Card */
+            background: var(--bg-card);
             padding: 50px;
             box-shadow: var(--shadow-glow);
             border: 1px solid var(--border-dim);
@@ -223,9 +207,6 @@
 
         @media(max-width:900px){ .stats-grid{grid-template-columns: 1fr 1fr; gap: 30px;} .stat-box{border:none;} }
 
-        /* =========================================
-           6. TIMELINE
-           ========================================= */
         .section-padding { padding: 120px 5%; }
         .text-center { text-align: center; }
         
@@ -259,9 +240,6 @@
 
         @media(max-width:768px){ .timeline-line{left: 20px;} .timeline-dot{left: 20px;} .timeline-content{width: 85%; margin-left: auto !important; margin-right: 0 !important; text-align: left !important;} }
 
-        /* =========================================
-           7. ORGANIZATION CHART
-           ========================================= */
         .org-section { background: #151210; }
         
         .btn-toggle-org {
@@ -275,11 +253,8 @@
         .org-reveal.active { max-height: 2000px; opacity: 1; }
         .org-reveal img { max-width: 100%; border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); opacity: 0.9; }
 
-        /* =========================================
-           8. MAP SECTION (RESIZED & STYLED)
-           ========================================= */
         .map-section {
-            padding: 50px 5%; /* Added padding so it's not edge-to-edge */
+            padding: 50px 5%;
             border-top: 1px solid var(--border-dim);
             position: relative;
             background: var(--bg-dark);
@@ -287,27 +262,23 @@
         
         .map-wrapper {
             width: 100%;
-            max-width: 1200px; /* Limits the width */
-            height: 350px; /* Reduced height */
-            margin: 0 auto; /* Centers the map */
+            max-width: 1200px;
+            height: 350px;
+            margin: 0 auto;
             
-            border-radius: 10px; /* Soft corners */
+            border-radius: 10px;
             overflow: hidden;
-            border: 1px solid var(--accent-taupe); /* Luxury border */
+            border: 1px solid var(--accent-taupe);
             
             filter: grayscale(100%) invert(90%) contrast(85%);
             transition: all 0.5s ease;
         }
         
-        /* On hover, full color and slightly larger shadow */
         .map-wrapper:hover {
             filter: grayscale(0%) invert(0%);
             box-shadow: 0 10px 30px rgba(139, 125, 114, 0.2);
         }
 
-        /* =========================================
-           9. FOOTER
-           ========================================= */
         footer { background: #0b0908; color: #888; padding: 100px 5% 30px; border-top: 1px solid var(--border-dim); }
         .footer-flex { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; margin-bottom: 60px; }
         .footer-brand { flex: 2; min-width: 300px; }
@@ -484,7 +455,6 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // 1. PAGE LOAD ANIMATION
         window.addEventListener('load', () => {
             const loader = document.getElementById('preloader');
             setTimeout(() => {
@@ -495,17 +465,14 @@
             }, 1500); 
         });
 
-        // 2. SCROLL ANIMATIONS (AOS)
         AOS.init({duration: 1000, once: true});
 
-        // 3. NAVBAR SCROLL EFFECT
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if(window.scrollY > 50) nav.classList.add('scrolled');
             else nav.classList.remove('scrolled');
         });
 
-        // 4. HERO SLIDER
         const slides = document.querySelectorAll('.slide');
         let idx = 0;
         setInterval(() => {
@@ -514,7 +481,6 @@
             slides[idx].classList.add('active');
         }, 5000);
 
-        // 5. ORG CHART TOGGLE
         const btn = document.getElementById('orgBtn');
         const content = document.getElementById('orgContent');
         btn.addEventListener('click', () => {
@@ -522,7 +488,6 @@
             btn.textContent = content.classList.contains('active') ? "Close Chart" : "View Organization Chart";
         });
 
-        // 6. STATS COUNTER
         const stats = document.querySelectorAll('.stat-num');
         const observer = new IntersectionObserver((entries) => {
             if(entries[0].isIntersecting) {

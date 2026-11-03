@@ -10,13 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
        <style>
-        /* ============================
-           1. PRELOADER CSS (Added)
-           ============================ */
         #preloader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #fcfbf9; /* Soft Off-White to match page */
+            background-color: #fcfbf9;
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -34,8 +31,8 @@
 
         .loader-ring {
             width: 45px; height: 45px;
-            border: 3px solid rgba(90, 74, 66, 0.15); /* Light Brown Transparent */
-            border-top: 3px solid #5a4a42; /* Primary Brown */
+            border: 3px solid rgba(90, 74, 66, 0.15);
+            border-top: 3px solid #5a4a42;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -98,7 +95,6 @@
 	</div>
 
     <script>
-        // Password Match Validation
         function validatePasswords() {
             const pass = document.getElementById('newPassword').value;
             const confirm = document.getElementById('confirmPassword').value;
@@ -111,7 +107,6 @@
             return true;
         }
 
-        // Toggle Password Visibility Logic
         function setupToggle(toggleId, inputId) {
             const toggle = document.getElementById(toggleId);
             const input = document.getElementById(inputId);
