@@ -7,11 +7,9 @@ public class TeacherAssign {
     private int subjectId;
     private String academicYear;
     
-    // Helper fields for the Card View
     private String ClassName;
     private String subjectName;
 
-    // Getters and Setters
     public int getAssignId() { return assignId; }
     public void setAssignId(int assignId) { this.assignId = assignId; }
     public int getTeacherId() { return TeacherID; }

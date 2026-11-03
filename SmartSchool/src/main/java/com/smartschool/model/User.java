@@ -6,7 +6,6 @@ public class User {
     private String role; 
     private String name; 
 
-    // Getters and Setters
     public int getUserId() { return userId; }
     public void setUserId(int userId) { this.userId = userId; }
     public String getEmail() { return email; }

@@ -10,7 +10,6 @@ public class Attendance {
     private String notes;
     private String mcImage;
 
-    // Empty Constructor
     public Attendance() {}
 
     public Attendance(String date, int ClassID, String academicYear, String StudIC, String status, String notes) {
@@ -22,7 +21,6 @@ public class Attendance {
         this.notes = notes;
     }
 
-    // Getters and Setters
     public int getAttendanceID() { return attendanceID; }
     public void setAttendanceID(int attendanceID) { this.attendanceID = attendanceID; }
 

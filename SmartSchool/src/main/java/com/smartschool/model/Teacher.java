@@ -14,7 +14,6 @@ public class Teacher extends User {
     private String Status;
     private List<String> assignedSubjects;
 
-    // Getters and Setters
     public int getTeacherID() { return TeacherID; }
     public void setTeacherID(int teacherID) { this.TeacherID = teacherID; }
 

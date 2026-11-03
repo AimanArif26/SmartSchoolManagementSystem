@@ -5,7 +5,6 @@ public class Subject {
     private String subjectName;
     private String subjectCode;
 
-    // Getters and Setters
     public int getSubjectID() { return subjectID; }
     public void setSubjectID(int subjectID) { this.subjectID = subjectID; }
     public String getSubjectName() { return subjectName; }

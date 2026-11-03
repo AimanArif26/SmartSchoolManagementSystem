@@ -8,10 +8,8 @@ public class Classroom {
     private int classYear;
     private String teacherName;
     
-    // Empty Constructor
     public Classroom() {}
 
-    // Constructor with fields
     public Classroom(int ClassID, String ClassName, int TeacherId, int classYear, int AcademicYear) {
         this.ClassID = ClassID;
         this.ClassName = ClassName;
@@ -20,7 +18,6 @@ public class Classroom {
         this.AcademicYear = AcademicYear;
     }
 
-    // Getters and Setters
     public int getClassID() {
         return ClassID;
     }

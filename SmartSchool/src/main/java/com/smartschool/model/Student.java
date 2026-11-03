@@ -27,7 +27,6 @@ public class Student {
         this.className = className;
     }
 
-    // Getters and Setters
     public String getStudIC() { return studIC; }
     public void setStudIC(String studIC) { this.studIC = studIC; }
 

@@ -1,8 +1,5 @@
 package com.smartschool.model;
 
-/**
- * Model representing an individual examination record for a student.
- */
 public class Examination {
     private int examId;
     private int ClassID;
@@ -29,8 +26,6 @@ public class Examination {
         this.examGrade = examGrade;
         this.subjectName = subjectName;
     }
-
-    // --- Getters and Setters ---
 
     public int getExamId() { return examId; }
     public void setExamId(int examId) { this.examId = examId; }
