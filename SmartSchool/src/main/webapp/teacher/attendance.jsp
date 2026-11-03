@@ -43,7 +43,6 @@ List<Student> studentList = dao.getStudentsByClass(teacherClass.getClassID());
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="../assets/css/homepage.css"><link rel="icon" type="image/webp" href="<%=request.getContextPath()%>/assets/image/sksmLOGO.webp">
 <style>
-/* Specific Styles for Attendance Table */
 .attendance-filters {
 	display: flex;            
     justify-content: space-between; 
@@ -109,21 +108,18 @@ List<Student> studentList = dao.getStudentsByClass(teacherClass.getClassID());
     outline: none;
 }
 
-/* Hover State */
 .note-input:hover {
     border-color: #8c8279;
     background-color: #fff;
 }
 
-/* Focus State */
 .note-input:focus {
     border-color: #8c8279;
     background-color: #fff;
     box-shadow: 0 0 0 3px rgba(140, 130, 121, 0.1);
-    width: 100%; /* Slightly expands for easier typing */
+    width: 100%;
 }
 
-/* Placeholder Styling */
 .note-input::placeholder {
     color: #bbb;
     font-style: italic;
@@ -187,7 +183,7 @@ List<Student> studentList = dao.getStudentsByClass(teacherClass.getClassID());
         position: fixed;
         bottom: 20px;
         left: 50%;
-        transform: translateX(-50%); /* Centers it horizontally */
+        transform: translateX(-50%);
         width: 90%;
         max-width: 800px;
         background: #fdfaf8;
@@ -228,9 +224,8 @@ List<Student> studentList = dao.getStudentsByClass(teacherClass.getClassID());
         transform: scale(1.1);
     }
 
-    /* Animation class for sliding down */
     .note-slide-down {
-        transform: translate(-50%, 150%) !important; /* Moves it off screen */
+        transform: translate(-50%, 150%) !important;
         opacity: 0;
     }
 </style>
@@ -406,7 +401,6 @@ List<Student> studentList = dao.getStudentsByClass(teacherClass.getClassID());
 	</div>
 
 	<script>
-    // 1. Sidebar & Profile Menu Logic
     const menuToggle = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
     if(menuToggle) {
@@ -423,7 +417,6 @@ List<Student> studentList = dao.getStudentsByClass(teacherClass.getClassID());
     }
     document.addEventListener('click', () => { if(profileMenu) profileMenu.style.display = 'none'; });
 
-    // 2. Logout Logic
     const logoutOption = document.getElementById('logoutOption');
     const logoutModal = document.getElementById('logoutModal');
     if(logoutOption) {
@@ -434,11 +427,9 @@ List<Student> studentList = dao.getStudentsByClass(teacherClass.getClassID());
         window.location.href = '../choice.html';
     });
 
-    // 3. Simple Submission Logic
     const confirmModal = document.getElementById('confirmSubmitModal');
 
     function showSubmitModal() {
-        // Just show a standard confirmation modal
         confirmModal.style.display = 'flex';
     }
 
@@ -450,43 +441,34 @@ List<Student> studentList = dao.getStudentsByClass(teacherClass.getClassID());
         const datePicker = document.getElementById('datePicker');
         const selectedDateStr = datePicker.value;
         
-        // 1. Validate if a date is selected
         if (!selectedDateStr) {
             alert("Please select a date first.");
             return;
         }
 
-        // 2. Create Date objects for comparison
         const selectedDate = new Date(selectedDateStr);
         const today = new Date();
         
-        // Reset "today" time to 00:00:00 for an accurate date-only comparison
         today.setHours(0, 0, 0, 0);
         selectedDate.setHours(0, 0, 0, 0);
 
-        // 3. Prevent Future Dates
         if (selectedDate > today) {
             alert("Selection Error: You cannot record attendance for a future date.");
             return;
         }
 
-        // 4. (Optional) Prevent Weekend Submissions
-        // 0 = Sunday, 6 = Saturday
         const dayOfWeek = selectedDate.getDay();
         if (dayOfWeek === 0 || dayOfWeek === 6) {
             const confirmWeekend = confirm("Notice: The selected date falls on a weekend. Do you still want to proceed?");
             if (!confirmWeekend) return;
         }
 
-        // 5. Final Confirmation and Sync
-        // Sync the date from the picker to the hidden field for the Servlet
         document.getElementById('hiddenDate').value = selectedDateStr;
         
         document.getElementById('confirmSubmitModal').style.display = 'none';
         document.getElementById('attendanceForm').submit();
     }
 
-    // 4. Handle Success Message on Page Load
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('success') === '1') {
@@ -495,7 +477,6 @@ List<Student> studentList = dao.getStudentsByClass(teacherClass.getClassID());
                 successModal.style.display = 'flex';
                 setTimeout(() => {
                     successModal.style.display = 'none';
-                    // Clean URL
                     window.history.replaceState({}, document.title, window.location.pathname);
                 }, 2500);
             }
@@ -503,10 +484,8 @@ List<Student> studentList = dao.getStudentsByClass(teacherClass.getClassID());
     }
 	function closeNote() {
 	    const note = document.getElementById('floatingNote');
-	    // Add the class that triggers the slide-down animation
 	    note.classList.add('note-slide-down');
 	    
-	    // Optional: Remove from DOM after animation finishes
 	    setTimeout(() => {
 	        note.style.display = 'none';
 	    }, 500);

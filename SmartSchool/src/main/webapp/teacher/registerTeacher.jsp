@@ -18,7 +18,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/webp" href="<%=request.getContextPath()%>/assets/image/sksmLOGO.webp">
 <style>
-    /* CSS for the Modal Overlay */
     .modal-overlay {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         background: rgba(0, 0, 0, 0.5); display: none; justify-content: center;
@@ -62,7 +61,6 @@
 </head>
 
 <body>
-    <%-- SUCCESS POPUP --%>
     <% if ("1".equals(success)) { %>
     <div id="successModal" class="modal-overlay" style="display: flex;">
         <div class="modal-box">

@@ -38,7 +38,6 @@
 <link rel="stylesheet" href="../assets/css/homepage.css" />
 <link rel="icon" type="image/webp" href="<%=request.getContextPath()%>/assets/image/sksmLOGO.webp">
 <style>
-/* PROFILE SPECIFIC STYLES */
 .profile-grid {
 	display: grid;
 	grid-template-columns: 320px 1fr;
@@ -47,7 +46,6 @@
 	margin: 0 auto;
 }
 
-/* Left Side Card */
 .profile-card-left {
 	background: white;
 	padding: 40px 20px;
@@ -84,7 +82,6 @@
 	margin-bottom: 20px;
 }
 
-/* Right Side Details */
 .profile-details-right {
 	background: white;
 	padding: 40px;
@@ -124,7 +121,6 @@
 	border-radius: 4px;
 }
 
-/* Action Buttons */
 .profile-actions {
 	margin-top: 30px;
 	display: flex;
@@ -151,7 +147,6 @@
 	transform: translateY(-2px);
 }
 
-/* Responsive */
 @media ( max-width : 850px) {
 	.profile-grid {
 		grid-template-columns: 1fr;
@@ -363,12 +358,10 @@
 
       const editModal = document.getElementById("editProfileModal");
 
-      // Open the Modal
       function openEditModal() {
         editModal.style.display = "flex";
       }
 
-      // Close the Modal
       function closeEditModal() {
         editModal.style.display = "none";
       }
@@ -380,7 +373,6 @@
                   successModal.style.display = 'flex';
                   setTimeout(() => {
                       successModal.style.display = 'none';
-                      // Clean URL
                       window.history.replaceState({}, document.title, window.location.pathname);
                   }, 2500);
               }

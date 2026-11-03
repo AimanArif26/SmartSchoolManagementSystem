@@ -216,7 +216,6 @@
 	</div>
 
 	<script>
-        // Sidebar & Profile Logic
         const menuToggle = document.getElementById('menu-toggle');
         const sidebar = document.getElementById('sidebar');
         menuToggle.addEventListener('click', () => sidebar.classList.toggle('collapsed'));
@@ -229,7 +228,6 @@
         });
         document.addEventListener('click', () => profileMenu.style.display = 'none');
 
-        // Logout Modal
         const logoutOption = document.getElementById('logoutOption');
         const logoutModal = document.getElementById('logoutModal');
         logoutOption.addEventListener('click', () => logoutModal.style.display = 'flex');

@@ -120,7 +120,7 @@
 	position: fixed;
 	bottom: 20px;
 	left: 50%;
-	transform: translateX(-50%); /* Centers it horizontally */
+	transform: translateX(-50%);
 	width: 90%;
 	max-width: 800px;
 	background: #fdfaf8;
@@ -162,9 +162,8 @@
 	transform: scale(1.1);
 }
 
-/* Animation class for sliding down */
 .note-slide-down {
-	transform: translate(-50%, 150%) !important; /* Moves it off screen */
+	transform: translate(-50%, 150%) !important;
 	opacity: 0;
 }
 </style>
@@ -348,7 +347,6 @@
 	</div>
 
 	<script>
-    // ---  GRADING LOGIC ---
     document.querySelectorAll('.score-input').forEach(input => {
         input.addEventListener('input', function () {
             const row = this.closest('tr');
@@ -368,14 +366,12 @@
         });
     });
 
- 	// Sidebar Toggle
     const menuToggle = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
     menuToggle.addEventListener('click', () => {
         sidebar.classList.toggle('collapsed');
     });
 
-    // Profile Menu Logic
     const profileBtn = document.getElementById('profileBtn');
     const profileMenu = document.getElementById('profileMenu');
     profileBtn.addEventListener('click', (e) => {
@@ -385,7 +381,6 @@
 
     document.addEventListener('click', () => profileMenu.style.display = 'none');
 
-    // Logout Modal Logic
     const logoutOption = document.getElementById('logoutOption');
     const logoutModal = document.getElementById('logoutModal');
     const cancelLogout = document.getElementById('cancelLogout');
@@ -416,29 +411,26 @@
             const score = input.value.trim();
             const studentName = input.closest('tr').cells[1].innerText;
 
-            // 1. Check for Empty Field
             if (score === "") {
                 isValid = false;
                 errorMessage = `Error: Score for ${studentName} is empty.`;
                 input.style.borderColor = "red";
             } 
-            // 2. Check for Range (0-100)
             else if (parseFloat(score) < 0 || parseFloat(score) > 100) {
                 isValid = false;
                 errorMessage = `Error: Score for ${studentName} must be between 0 and 100.`;
                 input.style.borderColor = "red";
             } else {
-                input.style.borderColor = "#d0d0d0"; // Reset if valid
+                input.style.borderColor = "#d0d0d0";
             }
         });
 
         if (!isValid) {
-            // Display error message below the table
             const errorDiv = document.getElementById('tableErrorMessage');
             document.getElementById('errorText').innerText = errorMessage;
             errorDiv.style.display = "block";
             
-            hideModal(); // Close the confirmation modal so user can fix data
+            hideModal();
             return;
         }
 
@@ -449,7 +441,6 @@
 	window.onload = function() {
     	const urlParams = new URLSearchParams(window.location.search);
     
-    	// Check if the URL has ?success=1
     	if (urlParams.get('success') === '1') {
         	const successModal = document.getElementById('successSubmitModal');
         
