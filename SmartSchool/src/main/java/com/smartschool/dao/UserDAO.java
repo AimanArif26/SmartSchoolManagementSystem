@@ -19,14 +19,12 @@ import com.smartschool.model.User;
 import com.smartschool.util.OracleDBConnection;
 
 public class UserDAO {
-	
 	public boolean updateUserPassword(int userId, String newPassword) {
 		boolean isUpdated = false;
 		String sql = "UPDATE USERS SET PASSWORD = ? WHERE USER_ID = ?";
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setString(1, newPassword);
 			ps.setInt(2, userId);
 
@@ -48,7 +46,6 @@ public class UserDAO {
 
 		try (Connection con = OracleDBConnection.getConnection();
 				PreparedStatement ps = con.prepareStatement(sql)) {
-
 			ps.setString(1, email);
 			ps.setString(2, password);
 			ps.setString(3, role);
@@ -110,7 +107,6 @@ public class UserDAO {
 		}
 		return count;
 	}
-
 
 	public int getPendingValidationCount() {
 		int count = 0;
@@ -195,7 +191,6 @@ public class UserDAO {
 			try { if (conn != null) conn.rollback(); } catch (SQLException se) { se.printStackTrace(); }
 			e.printStackTrace();
 		} finally {
-			// Always close your connection!
 			try { if (conn != null) conn.close(); } catch (SQLException se) { se.printStackTrace(); }
 		}
 		return false;
@@ -230,7 +225,6 @@ public class UserDAO {
 	    try (Connection conn = OracleDBConnection.getConnection();
 	         PreparedStatement ps = conn.prepareStatement(sql);
 	         ResultSet rs = ps.executeQuery()) {
-	        
 	        while (rs.next()) {
 	            Teacher t = new Teacher();
 	            t.setTeacherID(rs.getInt("TEACHER_ID"));
@@ -267,7 +261,6 @@ public class UserDAO {
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setInt(1, ClassID);
 			ResultSet rs = ps.executeQuery();
 
@@ -350,7 +343,6 @@ public class UserDAO {
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setInt(1, TeacherID);
 			try (ResultSet rs = ps.executeQuery()) {
 				while (rs.next()) {
@@ -387,18 +379,15 @@ public class UserDAO {
 			conn.setAutoCommit(false); 
 			try (PreparedStatement ps = conn.prepareStatement(sql)) {
 				for (Examination e : examList) {
-					// --- USING clause (Match identifiers) ---
 					ps.setString(1, e.getStudIC());
 					ps.setInt(2, e.getSubjectId());
 					ps.setString(3, e.getExamType());
 					ps.setString(4, e.getAcademicYear()); 
 
-					// --- UPDATE clause ---
 					ps.setDouble(5, e.getExamMark());
 					ps.setString(6, e.getExamGrade());
 					ps.setString(7, e.getExamDate()); 
 
-					// --- INSERT clause ---
 					ps.setInt(8, e.getClassID());
 					ps.setDouble(9, e.getExamMark());
 					ps.setString(10, e.getExamDate()); 
@@ -501,7 +490,6 @@ public class UserDAO {
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setInt(1, teacherId);
 
 			try (ResultSet rs = ps.executeQuery()) {
@@ -523,14 +511,12 @@ public class UserDAO {
 	}
 	public List<String> getAssignedSubjects(int teacherId) {
 		List<String> subjects = new ArrayList<>();
-		// Using DISTINCT because a teacher might teach the same subject to multiple classes
 		String sql = "SELECT DISTINCT s.SUBJECT_NAME FROM TEACHER_ASSIGNMENT ta " +
 				"JOIN SUBJECT s ON ta.SUBJECT_ID = s.SUBJECT_ID " +
 				"WHERE ta.TEACHER_ID = ?";
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setInt(1, teacherId);
 			try (ResultSet rs = ps.executeQuery()) {
 				while (rs.next()) {
@@ -582,13 +568,11 @@ public class UserDAO {
 	}
 	public List<Teacher> getAllApprovedTeachers() {
 		List<Teacher> teachers = new ArrayList<>();
-		// teachers whose status is 'approved'
 		String sql = "SELECT TEACHER_ID, TEACHER_NAME FROM TEACHER WHERE STATUS = 'approved' ORDER BY TEACHER_NAME ASC";
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql);
 				ResultSet rs = ps.executeQuery()) {
-
 			while (rs.next()) {
 				Teacher t = new Teacher();
 				t.setTeacherID(rs.getInt("TEACHER_ID"));
@@ -610,7 +594,6 @@ public class UserDAO {
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setInt(1, year);
 			ResultSet rs = ps.executeQuery();
 
@@ -635,7 +618,6 @@ public class UserDAO {
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setInt(1, classId);
 			try (ResultSet rs = ps.executeQuery()) {
 				if (rs.next()) {
@@ -717,7 +699,6 @@ public class UserDAO {
 	}
 	public List<Classroom> getAssignedClasses(int teacherId) {
 		List<Classroom> list = new ArrayList<>();
-		// Join TEACHER_ASSIGN with CLASS to get names
 		String sql = "SELECT DISTINCT c.CLASS_ID, c.CLASS_NAME " +
 				"FROM TEACHER_ASSIGNMENT ta " +
 				"JOIN CLASSROOM c ON ta.CLASS_ID = c.CLASS_ID " +
@@ -756,13 +737,12 @@ public class UserDAO {
 		StringBuilder sql = new StringBuilder("SELECT ATTENDANCE_DATE, STATUS, NOTES FROM ATTENDANCE WHERE STUD_IC = ?");
 
 		if (month != null && !month.equals("ALL")) {
-			sql.append(" AND EXTRACT(MONTH FROM ATTENDANCE_DATE) = ?"); //
+			sql.append(" AND EXTRACT(MONTH FROM ATTENDANCE_DATE) = ?");
 		}
 		sql.append(" ORDER BY ATTENDANCE_DATE DESC");
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql.toString())) {
-
 			ps.setString(1, studIC);
 			if (month != null && !month.equals("ALL")) {
 				ps.setInt(2, Integer.parseInt(month));
@@ -785,7 +765,6 @@ public class UserDAO {
 	    
 	    try (Connection conn = OracleDBConnection.getConnection();
 	         PreparedStatement ps = conn.prepareStatement(sql)) {
-	        
 	        ps.setString(1, studIC);
 	        ps.setString(2, examType);
 	        ps.setString(3, academicYear);
@@ -816,10 +795,9 @@ public class UserDAO {
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setInt(1, classId);
-			ps.setString(2, month); // e.g., "01"
-			ps.setString(3, year);  // e.g., "2026"
+			ps.setString(2, month);
+			ps.setString(3, year);
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -869,7 +847,6 @@ public class UserDAO {
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setString(1, dbStatus);
 
 			ResultSet rs = ps.executeQuery();
@@ -908,7 +885,6 @@ public class UserDAO {
 			}
 
 			if (newPassword != null && !newPassword.trim().isEmpty()) {
-
 				String sqlUser = "UPDATE USERS SET PASSWORD = ? WHERE USER_ID = ?";
 				try (PreparedStatement psU = conn.prepareStatement(sqlUser)) {
 					psU.setString(1, newPassword);
@@ -934,7 +910,6 @@ public class UserDAO {
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setInt(1, teacherId);
 
 			int rowCount = ps.executeUpdate();
@@ -964,7 +939,6 @@ public class UserDAO {
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setInt(1, year);
 			ResultSet rs = ps.executeQuery();
 
@@ -979,7 +953,6 @@ public class UserDAO {
 				s.setStudGender(rs.getString("STUD_GENDER"));
 				s.setGuardianIC(rs.getString("GUARDIAN_IC"));
 				s.setClassId(rs.getInt("CLASS_ID"));
-
 
 				s.setClassName(rs.getString("CLASS_NAME")); 
 				if (s.getClassName() == null) s.setClassName("No Class"); 
@@ -1010,7 +983,6 @@ public class UserDAO {
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-
 			if (keyword != null && !keyword.trim().isEmpty()) {
 				String queryParam = "%" + keyword.toLowerCase() + "%";
 				preparedStatement.setString(1, queryParam);
@@ -1046,7 +1018,6 @@ public class UserDAO {
 	        
 	        try (Connection conn = OracleDBConnection.getConnection();
 	             PreparedStatement ps = conn.prepareStatement(sql)) {
-	            
 	            ps.setString(1, ic);
 	  
 	            int rowCount = ps.executeUpdate();
@@ -1062,12 +1033,10 @@ public class UserDAO {
 	    }
 	public boolean deleteAllStudents() {
 	      boolean isSuccess = false;
-	      // Soft delete everyone
 	      String sql = "UPDATE STUDENT SET STUD_STATUS = 'INACTIVE'"; 
 	      
 	      try (Connection conn = OracleDBConnection.getConnection();
 	           PreparedStatement ps = conn.prepareStatement(sql)) {
-	          
 	          int rows = ps.executeUpdate();
 	          isSuccess = rows > 0;
 	          
@@ -1083,7 +1052,6 @@ public class UserDAO {
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setInt(1, year);
 			int rowCount = ps.executeUpdate();
 
@@ -1123,12 +1091,10 @@ public class UserDAO {
 
             String finalSql;
             if (studentExists) {
-                // REACTIVATE existing student
                 finalSql = "UPDATE STUDENT SET STUD_NAME=?, STUD_YEAR=?, DATEOFBIRTH=?, " +
                            "ADDRESS=?, STUD_GENDER=?, CLASS_ID=?, GUARDIAN_ID=?, STUD_STATUS='ACTIVE' " +
                            "WHERE STUD_IC=?";
             } else {
-                // INSERT new student
                 finalSql = "INSERT INTO STUDENT (STUD_NAME, STUD_YEAR, DATEOFBIRTH, " +
                            "ADDRESS, STUD_GENDER, CLASS_ID, GUARDIAN_ID, STUD_STATUS, STUD_IC) " +
                            "VALUES (?, ?, ?, ?, ?, ?, ?, 'ACTIVE', ?)";
@@ -1170,7 +1136,6 @@ public class UserDAO {
 
 		try (Connection conn = OracleDBConnection.getConnection();
 				PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setString(1, ic);
 			ResultSet rs = ps.executeQuery();
 
@@ -1225,10 +1190,6 @@ public class UserDAO {
 		return id;
 	}
 
-	// ============
-	// guardian
-	// ============
-
 	public String registerGuardian(String email, String password, String guardianIC) {
         Connection conn = null;
         String status = "FAIL"; 
@@ -1237,7 +1198,6 @@ public class UserDAO {
             conn = OracleDBConnection.getConnection();
             conn.setAutoCommit(false);
 
-            // 1. Check if this Guardian IC exists in the system
             int userId = 0;
             String findGuardianSql = "SELECT GUARDIAN_ID FROM GUARDIAN WHERE GUARDIAN_IC = ?";
             
@@ -1248,25 +1208,22 @@ public class UserDAO {
                 if (rs.next()) {
                     userId = rs.getInt("GUARDIAN_ID"); 
                 } else {
-                    return "IC_NOT_FOUND"; // 
+                    return "IC_NOT_FOUND";
                 }
             }
 
-            // 2. Check if this account is already active (Email is already set)
             String checkUserSql = "SELECT EMAIL FROM USERS WHERE USER_ID = ?";
             try (PreparedStatement ps = conn.prepareStatement(checkUserSql)) {
                 ps.setInt(1, userId);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
                     String existingEmail = rs.getString("EMAIL");
-                    // If email is not null, they already registered
                     if (existingEmail != null && !existingEmail.trim().isEmpty()) {
                         return "ALREADY_REGISTERED";
                     }
                 }
             }
 
-            // 3. Check if the NEW email is taken by someone ELSE
             String checkEmailUnique = "SELECT USER_ID FROM USERS WHERE EMAIL = ?";
             try (PreparedStatement ps = conn.prepareStatement(checkEmailUnique)) {
                 ps.setString(1, email);
@@ -1276,7 +1233,6 @@ public class UserDAO {
                 }
             }
 
-            // 4. Update the existing blank User record
             String updateSql = "UPDATE USERS SET EMAIL = ?, PASSWORD = ? WHERE USER_ID = ?";
             try (PreparedStatement ps = conn.prepareStatement(updateSql)) {
                 ps.setString(1, email);
@@ -1302,14 +1258,12 @@ public class UserDAO {
     }
 
 	public Guardian loginGuardian(String email, String password) {
-
 		Guardian guardian = null;
 
 		String sql = "SELECT g.GUARDIAN_ID " + "FROM USERS u " + "JOIN GUARDIAN g ON u.USER_ID = g.GUARDIAN_ID "
 				+ "WHERE u.EMAIL = ? " + "AND u.PASSWORD = ? " + "AND u.ROLE = 'guardian'";
 
 		try (Connection conn = OracleDBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setString(1, email);
 			ps.setString(2, password);
 
@@ -1328,13 +1282,11 @@ public class UserDAO {
 	}
 
 	public List<Student> getStudentsByGuardian(int guardianID) {
-
 		List<Student> students = new ArrayList<>();
 
 		String sql = "SELECT STUD_IC, STUD_NAME, STUD_YEAR " + "FROM STUDENT " + "WHERE GUARDIAN_ID = ?";
 
 		try (Connection conn = OracleDBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-
 			ps.setInt(1, guardianID);
 
 			try (ResultSet rs = ps.executeQuery()) {
@@ -1362,7 +1314,6 @@ public class UserDAO {
 
 	    try (Connection conn = OracleDBConnection.getConnection(); 
 	         PreparedStatement ps = conn.prepareStatement(sql)) {
-
 	        ps.setString(1, studIC);
 	        
 	        try (ResultSet rs = ps.executeQuery()) {
@@ -1388,7 +1339,6 @@ public class UserDAO {
 	    String sql = "UPDATE STUDENT SET ADDRESS = ? WHERE STUD_IC = ?";
 	    try (Connection conn = OracleDBConnection.getConnection();
 	         PreparedStatement ps = conn.prepareStatement(sql)) {
-	        
 	        ps.setString(1, newAddress);
 	        ps.setString(2, studIC);
 	        
@@ -1411,7 +1361,6 @@ public class UserDAO {
 
 		try (Connection con = OracleDBConnection.getConnection();
 				PreparedStatement ps = con.prepareStatement(sql.toString())) {
-
 			ps.setString(1, studIC);
 			if (month != null && !month.equals("ALL")) {
 				ps.setString(2, month);
@@ -1469,7 +1418,6 @@ public class UserDAO {
 	    
 	    try (Connection conn = OracleDBConnection.getConnection();
 	         PreparedStatement ps = conn.prepareStatement(sql)) {
-	        
 	        ps.setString(1, studIC);
 	        try (ResultSet rs = ps.executeQuery()) {
 	            while (rs.next()) {
@@ -1482,8 +1430,4 @@ public class UserDAO {
 	    return years;
 	}
 
-	// ==============
-	// end guardian
-	// ==============
-	// Add this to your UserDAO.java
 }
