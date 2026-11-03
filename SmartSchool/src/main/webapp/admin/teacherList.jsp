@@ -234,14 +234,12 @@
 	</div>
 
 	<script>
-    // --- Sidebar Logic ---
     const menuToggle = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
     if (menuToggle) {
         menuToggle.addEventListener('click', () => sidebar.classList.toggle('collapsed'));
     }
 
-    // --- Profile Menu Logic ---
     const profileBtn = document.getElementById('profileBtn');
     const profileMenu = document.getElementById('profileMenu');
     if (profileBtn) {
@@ -251,12 +249,10 @@
         });
     }
     
- // Close dropdown on outside click
     window.addEventListener('click', () => {
         profileMenu.style.display = 'none';
     });
 
-    // Logout Modal Logic
     const logoutOption = document.getElementById('logoutOption');
     const logoutModal = document.getElementById('logoutModal');
     const cancelLogout = document.getElementById('cancelLogout');
@@ -266,14 +262,12 @@
     cancelLogout.addEventListener('click', () => logoutModal.style.display = 'none');
     confirmLogout.addEventListener('click', () => window.location.href = '../LogoutServlet');
 
-
-    // --- Search Function ---
     function searchTable() {
         let input = document.getElementById("searchInput").value.toUpperCase();
         let table = document.getElementById("teacherTable");
         let tr = table.getElementsByTagName("tr");
         for (let i = 1; i < tr.length; i++) { 
-            let td = tr[i].getElementsByTagName("td")[1]; // 'Name' column
+            let td = tr[i].getElementsByTagName("td")[1];
             if (td) {
                 let txtValue = td.textContent || td.innerText;
                 tr[i].style.display = txtValue.toUpperCase().indexOf(input) > -1 ? "" : "none";
@@ -281,7 +275,6 @@
         }
     }
 
-    // --- Modal Logic ---
 function openEditModal(id, name, cert, phone, email) {
     document.getElementById('editTeacherId').value = id;
     document.getElementById('editName').value = name;
@@ -304,7 +297,6 @@ function closeEditModal() {
         document.getElementById('deleteTeacherModal').style.display = 'none';
     }
 
-    // --- Global Click Listener ---
     window.onclick = function(event) {
         if (event.target == document.getElementById('editTeacherModal')) closeEditModal();
         if (event.target == document.getElementById('deleteTeacherModal')) closeDeleteModal();
@@ -313,7 +305,6 @@ function closeEditModal() {
         }
     }
 
-    // --- Notification Logic ---
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         const status = urlParams.get('status');

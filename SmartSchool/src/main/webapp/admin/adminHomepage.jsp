@@ -37,7 +37,7 @@
         #preloader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #fcfbf9; /* Soft Off-White to match page */
+            background-color: #fcfbf9;
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -55,8 +55,8 @@
 
         .loader-ring {
             width: 45px; height: 45px;
-            border: 3px solid rgba(90, 74, 66, 0.15); /* Light Brown Transparent */
-            border-top: 3px solid #5a4a42; /* Primary Brown */
+            border: 3px solid rgba(90, 74, 66, 0.15);
+            border-top: 3px solid #5a4a42;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -197,14 +197,12 @@
 	</div>
 
 	<script>
-        // Sidebar Toggle
         const menuToggle = document.getElementById('menu-toggle');
         const sidebar = document.getElementById('sidebar');
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('collapsed');
         });
 
-        // Profile Menu Toggle
         const profileBtn = document.getElementById('profileBtn');
         const profileMenu = document.getElementById('profileMenu');
         profileBtn.addEventListener('click', (e) => {
@@ -212,12 +210,10 @@
             profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
         });
 
-        // Close dropdown on outside click
         window.addEventListener('click', () => {
             profileMenu.style.display = 'none';
         });
 
-        // Logout Modal Logic
         const logoutOption = document.getElementById('logoutOption');
         const logoutModal = document.getElementById('logoutModal');
         const cancelLogout = document.getElementById('cancelLogout');

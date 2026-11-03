@@ -25,7 +25,6 @@ String displayEmail = currentUser.getEmail();
 <link rel="stylesheet" href="../assets/css/homepage.css" />
 <link rel="icon" type="image/webp" href="<%=request.getContextPath()%>/assets/image/sksmLOGO.webp">
 <style>
-/* PROFILE SPECIFIC STYLES */
 .profile-grid {
 	display: grid;
 	grid-template-columns: 320px 1fr;
@@ -34,7 +33,6 @@ String displayEmail = currentUser.getEmail();
 	margin: 0 auto;
 }
 
-/* Left Side Card */
 .profile-card-left {
 	background: white;
 	padding: 40px 20px;
@@ -71,7 +69,6 @@ String displayEmail = currentUser.getEmail();
 	margin-bottom: 20px;
 }
 
-/* Right Side Details */
 .profile-details-right {
 	background: white;
 	padding: 40px;
@@ -111,7 +108,6 @@ String displayEmail = currentUser.getEmail();
 	border-radius: 4px;
 }
 
-/* Action Buttons */
 .profile-actions {
 	margin-top: 30px;
 	display: flex;
@@ -138,7 +134,6 @@ String displayEmail = currentUser.getEmail();
 	transform: translateY(-2px);
 }
 
-/* Responsive */
 @media ( max-width : 850px) {
 	.profile-grid {
 		grid-template-columns: 1fr;
@@ -421,12 +416,10 @@ to {
 
       const editModal = document.getElementById("editProfileModal");
 
-      // Open the Modal
       function openEditModal() {
         editModal.style.display = "flex";
       }
 
-      // Close the Modal
       function closeEditModal() {
         editModal.style.display = "none";
       }
@@ -440,7 +433,6 @@ to {
           addAdminModal.style.display = "none";
       }
 
-      // Close modals if clicking outside the box
       window.addEventListener("click", (event) => {
           if (event.target == addAdminModal) closeAddAdminModal();
           if (event.target == editModal) closeEditModal();
@@ -455,7 +447,6 @@ to {
     	        let message = "";
     	        let colorType = "";
 
-    	        // Logic for different statuses
     	        if (status === 'adminAdded') { 
     	            message = "✅ New Admin Account Created!"; 
     	            colorType = "success"; 

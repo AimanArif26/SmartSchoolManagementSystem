@@ -166,7 +166,6 @@
     </div>
 
     <script>
-    // Standard UI Logic
     const menuToggle = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
     menuToggle.addEventListener('click', () => sidebar.classList.toggle('collapsed'));
@@ -179,12 +178,10 @@
     });
     window.onclick = () => profileMenu.style.display = 'none';
 
-    // Logout
     document.getElementById('logoutOption').addEventListener('click', () => document.getElementById('logoutModal').style.display = 'flex');
     document.getElementById('cancelLogout').addEventListener('click', () => document.getElementById('logoutModal').style.display = 'none');
     document.getElementById('confirmLogout').addEventListener('click', () => window.location.href = '../LogoutServlet');
 
-    // Search Logic
     function searchTable() {
         let input = document.getElementById("searchInput").value.toUpperCase();
         let rows = document.getElementById("validateTableBody").getElementsByTagName("tr");
@@ -197,7 +194,6 @@
         }
     }
 
-    // Modal & Validation Logic
     const modal = document.getElementById('confirmModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalMessage = document.getElementById('modalMessage');
@@ -247,7 +243,6 @@
     function closeEditModal() {
         document.getElementById('confirmModal').style.display = 'none';
     }
-    // Toast Notifications
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         const status = urlParams.get('status');

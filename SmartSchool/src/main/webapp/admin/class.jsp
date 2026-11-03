@@ -276,7 +276,6 @@
     </div>
 
     <script>
-        // Search Logic
         function searchClass() {
             var input = document.getElementById("searchInput");
             var filter = input.value.toUpperCase();
@@ -298,7 +297,6 @@
             }
         }
 
-        // Modal Functions
         function openAddClassModal() { document.getElementById('addClassModal').style.display = 'flex'; }
         function closeAddClassModal() { document.getElementById('addClassModal').style.display = 'none'; }
         
@@ -326,7 +324,6 @@
             if (classIdToDelete) window.location.href = "../ClassServlet?action=delete&classId=" + classIdToDelete;
         });
 
-        // UI Helpers
         const menuToggle = document.getElementById('menu-toggle');
         const sidebar = document.getElementById('sidebar');
         menuToggle.addEventListener('click', () => sidebar.classList.toggle('collapsed'));
@@ -354,7 +351,7 @@
 
             if (status) {
                 let message = "";
-                let type = "success"; // Default to success style
+                let type = "success";
 
                 switch(status) {
                     case 'success': 
@@ -376,13 +373,11 @@
                     toast.innerText = message;
                     toast.className = "notification-toast " + type + " show";
                     
-                    // Hide after 3 seconds and clean URL
                     setTimeout(() => {
                         toast.classList.remove("show");
                         window.history.replaceState({}, document.title, window.location.pathname);
                     }, 3000);
                 }
-             // Only show if the status is an error type
                 if (status === 'teacherTaken' || status === 'error') {
                     let message = "";
                     
@@ -395,7 +390,6 @@
                     errorText.innerText = message;
                     errorContainer.style.display = "block";
                     
-                    // Clean URL without hiding the message immediately
                     window.history.replaceState({}, document.title, window.location.pathname);
                 }	
             }
@@ -406,7 +400,6 @@
             const currentYear = new Date().getFullYear();
             const enteredYear = parseInt(yearInput.value);
 
-            // Constraint: Year must be between (CurrentYear - 1) and (CurrentYear + 10)
             if (enteredYear < (currentYear - 1) || enteredYear > (currentYear + 10)) {
                 yearInput.style.borderColor = "#dc3545";
                 errorMsg.textContent = `Year must be between ${currentYear - 1} and ${currentYear + 10}`;
@@ -419,10 +412,9 @@
             return true;
         }
 
-        // Update your form submission to include this check
         document.querySelector('#editClassModal form').onsubmit = function(e) {
             if (!validateAcademicYear()) {
-                e.preventDefault(); // Stop form from submitting
+                e.preventDefault();
                 return false;
             }
             return true;

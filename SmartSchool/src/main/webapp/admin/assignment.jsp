@@ -264,14 +264,12 @@ to {
 	</div>
 
     <script>
-    // Sidebar Toggle
     const menuToggle = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
     menuToggle.addEventListener('click', () => {
         sidebar.classList.toggle('collapsed');
     });
 
-    // Profile Menu Toggle
     const profileBtn = document.getElementById('profileBtn');
     const profileMenu = document.getElementById('profileMenu');
     profileBtn.addEventListener('click', (e) => {
@@ -279,12 +277,10 @@ to {
         profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
     });
 
-    // Close dropdown on outside click
     window.addEventListener('click', () => {
         profileMenu.style.display = 'none';
     });
 
-    // Logout Modal Logic
     const logoutOption = document.getElementById('logoutOption');
     const logoutModal = document.getElementById('logoutModal');
     const cancelLogout = document.getElementById('cancelLogout');
@@ -323,30 +319,24 @@ to {
             }, 3000);
         }
     };
- 	// Assignment Confirmation Logic
     const assignmentForm = document.querySelector('form[action="../AssignServlet"]');
     const assignModal = document.getElementById('assignConfirmModal');
     const cancelAssign = document.getElementById('cancelAssign');
     const executeAssign = document.getElementById('executeAssign');
 
-    // intercept the form submit
     assignmentForm.addEventListener('submit', function(e) {
-        // Prevent actual submission first
         e.preventDefault();
         
-        // Show the confirmation modal
         assignModal.style.display = 'flex';
     });
 
-    // If user cancels
     cancelAssign.addEventListener('click', () => {
         assignModal.style.display = 'none';
     });
 
-    // If user confirms
     executeAssign.addEventListener('click', () => {
         assignModal.style.display = 'none';
-        assignmentForm.submit(); // Now actually send the data to the servlet
+        assignmentForm.submit();
     });
     </script>
 </body>

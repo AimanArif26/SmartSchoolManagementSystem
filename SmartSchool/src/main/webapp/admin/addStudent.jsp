@@ -17,13 +17,12 @@
 	<link rel="icon" type="image/webp" href="<%=request.getContextPath()%>/assets/image/sksmLOGO.webp">
 
 <style>
-/* Local specific styles for the Form */
 .form-container {
-	width: 60%; /* Slightly wider for better look */
-	margin: 0 auto; /* Center horizontally */
+	width: 60%;
+	margin: 0 auto;
 	padding: 40px;
 	background: #fff;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Match Card shadow */
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 	border-radius: 15px;
 	border: 1px solid #e5e7eb;
 }
@@ -36,27 +35,26 @@
 	display: block;
 	margin-bottom: 8px;
 	font-weight: 600;
-	color: #5a4a42; /* Theme Color */
+	color: #5a4a42;
 }
 
 .form-control {
 	width: 100%;
 	padding: 12px;
-	border: 1px solid #d4c4b7; /* Theme Border */
+	border: 1px solid #d4c4b7;
 	border-radius: 8px;
 	font-size: 14px;
 }
 
-/* Buttons */
 .form-actions {
 	margin-top: 30px;
 	display: flex;
 	gap: 15px;
-	justify-content: flex-end; /* Buttons to right */
+	justify-content: flex-end;
 }
 
 .btn-submit {
-	background-color: #5a4a42; /* Theme Brown */
+	background-color: #5a4a42;
 	color: white;
 	border: none;
 	padding: 12px 30px;
@@ -92,7 +90,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Darker background */
+    background: rgba(0, 0, 0, 0.6);
     display: none; 
     justify-content: center;
     align-items: center;
@@ -281,14 +279,12 @@
 		</div>
 	</div>
 	<script>
-// Sidebar Toggle
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.getElementById('sidebar');
 menuToggle.addEventListener('click', () => {
     sidebar.classList.toggle('collapsed');
 });
 
-// Profile Menu Toggle
 const profileBtn = document.getElementById('profileBtn');
 const profileMenu = document.getElementById('profileMenu');
 profileBtn.addEventListener('click', (e) => {
@@ -296,12 +292,10 @@ profileBtn.addEventListener('click', (e) => {
     profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
 });
 
-// Close dropdown on outside click
 window.addEventListener('click', () => {
     profileMenu.style.display = 'none';
 });
 
-// Logout Modal Logic
 const logoutOption = document.getElementById('logoutOption');
 const logoutModal = document.getElementById('logoutModal');
 const cancelLogout = document.getElementById('cancelLogout');
@@ -311,15 +305,13 @@ logoutOption.addEventListener('click', () => logoutModal.style.display = 'flex')
 cancelLogout.addEventListener('click', () => logoutModal.style.display = 'none');
 confirmLogout.addEventListener('click', () => window.location.href = '../LogoutServlet');
 
-    
-    // Filter Classes by Year
     function filterClassDropdown() {
         var yearSelect = document.getElementById("yearSelect");
         var selectedLevel = yearSelect.value;
         var classSelect = document.getElementById("classSelect");
         var options = classSelect.getElementsByTagName("option");
 
-        classSelect.value = ""; // Reset selection
+        classSelect.value = "";
 
         for (var i = 0; i < options.length; i++) {
             var option = options[i];
@@ -337,7 +329,6 @@ confirmLogout.addEventListener('click', () => window.location.href = '../LogoutS
         }
     }
 
-    // Auto-fill Date of Birth
     function extractDateFromIC() {
         var icInput = document.getElementById("studIC");
         var dobInput = document.getElementById("dob");
@@ -361,7 +352,6 @@ confirmLogout.addEventListener('click', () => window.location.href = '../LogoutS
         }
     }
 
-    // Validate Helper
     function validateIC(icNumber, ownerName) {
         var cleanIC = icNumber.replace(/[^0-9]/g, '');
         if (cleanIC.length < 12) {
@@ -389,10 +379,7 @@ confirmLogout.addEventListener('click', () => window.location.href = '../LogoutS
         return true;
     }
 
- // --- ADD STUDENT MODAL LOGIC ---
-
     function validateForm() {
-        // 1. Run your existing IC validations first
         var studIC = document.getElementById("studIC").value;
         if (!validateIC(studIC, "Student")) return false;
 
@@ -401,9 +388,8 @@ confirmLogout.addEventListener('click', () => window.location.href = '../LogoutS
             if (!validateIC(guardianICInput.value, "Guardian")) return false;
         }
 
-        // 2. If validation passes, show the custom modal instead of submitting
         showConfirmAddModal();
-        return false; // Prevent form from submitting immediately
+        return false;
     }
 
     function showConfirmAddModal() {
@@ -414,9 +400,7 @@ confirmLogout.addEventListener('click', () => window.location.href = '../LogoutS
         document.getElementById('confirmAddModal').style.display = 'none';
     }
 
-    // 3. Handle the final confirmation click
     document.getElementById('finalSubmitBtn').addEventListener('click', function() {
-        // Manually trigger the form submission
         document.querySelector('.form-container form').submit();
     });
 </script>

@@ -254,7 +254,6 @@
 	    const message = document.getElementById('bulkDeleteMessage');
 	    const modal = document.getElementById('bulkDeleteModal');
 
-	    // Customize the message based on selection
 	    if (mode === 'day') {
 	        title.innerText = "Delete Day Attendance";
 	        message.innerText = "Are you sure you want to delete attendance for " + val + "?";
@@ -273,7 +272,6 @@
 	    document.getElementById('bulkDeleteModal').style.display = 'none';
 	}
 
-	// Attach the submit logic to the modal's confirm button
 	document.getElementById('confirmBulkDeleteBtn').addEventListener('click', function() {
 	    if (currentDeleteMode && currentDeleteValue) {
 	        document.getElementById('deleteMode').value = currentDeleteMode;
@@ -282,14 +280,12 @@
 	    }
 	});
     
-    	// 1. Sidebar Toggle
         const menuToggle = document.getElementById('menu-toggle');
         const sidebar = document.getElementById('sidebar');
         if(menuToggle) {
             menuToggle.addEventListener('click', () => { sidebar.classList.toggle('collapsed'); });
         }
 
-        // 2. Profile Menu
         const profileBtn = document.getElementById('profileBtn');
         const profileMenu = document.getElementById('profileMenu');
         if(profileBtn) {
@@ -300,7 +296,6 @@
         }
         window.addEventListener('click', () => { if(profileMenu) profileMenu.style.display = 'none'; });
 
-        // 3. Logout Modal
         const logoutOption = document.getElementById('logoutOption');
         const logoutModal = document.getElementById('logoutModal');
         const cancelLogout = document.getElementById('cancelLogout');

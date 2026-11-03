@@ -87,7 +87,6 @@
                         </select>
                     </form>
 
-
                     <div class="search-container">
                         <input type="text" id="searchInput" class="form-control" placeholder="Search Name or IC..." onkeyup="searchStudent()">
                         <i class="fas fa-magnifying-glass"></i>
@@ -273,14 +272,12 @@
 		</div>
 	</div>
     <script>
-    // Sidebar Toggle
     const menuToggle = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
     menuToggle.addEventListener('click', () => {
         sidebar.classList.toggle('collapsed');
     });
 
-    // Profile Menu Toggle
     const profileBtn = document.getElementById('profileBtn');
     const profileMenu = document.getElementById('profileMenu');
     profileBtn.addEventListener('click', (e) => {
@@ -288,12 +285,10 @@
         profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
     });
 
-    // Close dropdown on outside click
     window.addEventListener('click', () => {
         profileMenu.style.display = 'none';
     });
 
-    // Logout Modal Logic
     const logoutOption = document.getElementById('logoutOption');
     const logoutModal = document.getElementById('logoutModal');
     const cancelLogout = document.getElementById('cancelLogout');
@@ -303,8 +298,6 @@
     cancelLogout.addEventListener('click', () => logoutModal.style.display = 'none');
     confirmLogout.addEventListener('click', () => window.location.href = '../LogoutServlet');
 
-
-        // Search
         function searchStudent() {
             var input = document.getElementById("searchInput");
             var filter = input.value.toUpperCase();
@@ -327,7 +320,6 @@
             }
         }
 
-     // --- Updated Delete Logic ---
         const deleteModal = document.getElementById('deleteStudentModal');
         const modalMessage = document.getElementById('modalMessage');
         const doubleConfirmContainer = document.getElementById('doubleConfirmContainer');
@@ -338,14 +330,13 @@
         let isDeleteAll = false;
         let yearToDelete = "";
 
-        // Matches teacher logic: opens with 'flex' to trigger popup animation
         function deleteSingleStudent(element, ic) {
             isDeleteAll = false;
             idToDelete = ic;
             modalMessage.innerText = "Are you sure you want to delete student with IC: " + ic + "?";
             doubleConfirmContainer.style.display = 'none'; 
             inputError.style.display = 'none';
-            deleteModal.style.display = 'flex'; // Triggers animation
+            deleteModal.style.display = 'flex';
         }
 
         function deleteAllStudents(year) {
@@ -358,7 +349,7 @@
             doubleConfirmContainer.style.display = 'block'; 
             confirmInput.value = "";
             inputError.style.display = 'none';
-            deleteModal.style.display = 'flex'; // Triggers animation
+            deleteModal.style.display = 'flex';
             confirmInput.focus();
         }
 
@@ -383,7 +374,6 @@
             }
         }
 
-        // Update the global click listener
         window.onclick = function(event) {
             if (event.target == document.getElementById('editStudentModal')) closeEditModal();
             if (event.target == deleteModal) closeDeleteModal();
@@ -392,7 +382,6 @@
             }
         }
 
-        // Toast
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const status = urlParams.get('status');
@@ -450,13 +439,11 @@
             options.forEach(option => {
                 const optionYear = option.getAttribute('data-year');
                 
-                // Always show the default placeholder
                 if (!optionYear) {
                     option.style.display = "block";
                     return;
                 }
 
-                // Show if year matches, otherwise hide
                 if (optionYear === selectedYear) {
                     option.style.display = "block";
                     if (firstMatch === "") firstMatch = option.value;
@@ -465,36 +452,31 @@
                 }
             });
 
-            // Reset selection if the current choice is now hidden
             const currentSelection = classSelect.options[classSelect.selectedIndex];
             if (currentSelection.style.display === "none") {
                 classSelect.value = ""; 
             }
         }
 
-        // Attach the event listener to the Year dropdown
         document.getElementById('editYear').addEventListener('change', filterClassesByYear);
         
-     // --- Promotion Modal Logic ---
         let promotionYear = "";
 
         function promoteAllStudents(year) {
             promotionYear = year;
             const msgContainer = document.getElementById('promoteModalMessage');
             
-            // Set message based on whether a specific year is filtered or not
             msgContainer.innerText = year ? 
                 "Promote all Year " + year + " students to the next academic level?" : 
                 "Promote ALL students in the entire school to the next academic level?";
             
-            document.getElementById('promoteStudentModal').style.display = 'flex'; // Triggers animation
+            document.getElementById('promoteStudentModal').style.display = 'flex';
         }
 
         function closePromoteModal() {
             document.getElementById('promoteStudentModal').style.display = 'none';
         }
 
-        // Logic for the actual promotion redirect
         document.getElementById('confirmPromoteBtn').addEventListener('click', function() {
             let url = "../StudentPromotionServlet?action=promoteAll";
             if (promotionYear) {
@@ -503,7 +485,6 @@
             window.location.href = url;
         });
 
-        // Update the global click listener to include the promote modal
         window.onclick = function(event) {
             if (event.target == document.getElementById('editStudentModal')) closeEditModal();
             if (event.target == document.getElementById('deleteStudentModal')) closeDeleteModal();

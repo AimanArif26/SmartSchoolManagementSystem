@@ -32,7 +32,7 @@
             margin: 20px auto;
         }
         .status-box {
-            background: #f8f5f2; /* Matching your beige theme */
+            background: #f8f5f2;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
@@ -246,14 +246,12 @@ to {
 		</div>
 	</div>
     <script>
-     	// Sidebar Toggle
         const menuToggle = document.getElementById('menu-toggle');
         const sidebar = document.getElementById('sidebar');
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('collapsed');
         });
 
-        // Profile Menu Toggle
         const profileBtn = document.getElementById('profileBtn');
         const profileMenu = document.getElementById('profileMenu');
         profileBtn.addEventListener('click', (e) => {
@@ -261,12 +259,10 @@ to {
             profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
         });
 
-        // Close dropdown on outside click
         window.addEventListener('click', () => {
             profileMenu.style.display = 'none';
         });
 
-        // Logout Modal Logic
         const logoutOption = document.getElementById('logoutOption');
         const logoutModal = document.getElementById('logoutModal');
         const cancelLogout = document.getElementById('cancelLogout');
@@ -278,7 +274,7 @@ to {
 		
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const status = urlParams.get('status'); // Ensure your SettingsServlet uses ?status=success
+            const status = urlParams.get('status');
             const toast = document.getElementById("toastNotification");
 
             if (status === 'success' || urlParams.has('success')) {
@@ -289,7 +285,6 @@ to {
                 
                 setTimeout(function(){ 
                     toast.classList.remove("show"); 
-                    // Clean the URL
                     window.history.replaceState({}, document.title, window.location.pathname);
                 }, 3000);
             }
